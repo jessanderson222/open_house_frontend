@@ -1,12 +1,12 @@
 const initialState = {
-  renters: []
+  loggedInRenter: null
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_RENTER":
-      const newRenterArray = [...state.renters, action.payload];
-      return { ...state, renters: newRenterArray };
+    case "SIGN_IN":
+      return { ...state, loggedInRenter: action.payload };
+    //this takes care of frontend, form data => thunk => thunk starts fetch => data sent to store
     default:
       return state;
   }

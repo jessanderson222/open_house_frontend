@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 class CreateAccount extends Component {
   state = {
-    createAccountUsername: "",
-    createAccountEmail: "",
-    createAccountPassword: ""
+    username: "",
+    email: "",
+    password: ""
   };
 
   handleChange = e => {
@@ -29,25 +29,25 @@ class CreateAccount extends Component {
           <label>User Name: </label>
           <input
             type="text"
-            name="createAccountUsername"
+            name="username"
             onChange={this.handleChange}
-            value={this.state.createAccountUsername}
+            value={this.state.username}
           />
           <br />
           <label>Email: </label>
           <input
             type="text"
-            name="createAccountEmail"
+            name="email"
             onChange={this.handleChange}
-            value={this.state.createAccountEmail}
+            value={this.state.email}
           />
           <br />
           <label>Password: </label>
           <input
             type="text"
-            name="createAccountPassword"
+            name="password"
             onChange={this.handleChange}
-            value={this.state.createAccountPassword}
+            value={this.state.password}
           />
           <br />
           <button>Sign Up</button>
@@ -60,7 +60,7 @@ class CreateAccount extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addRenter: renterObj => {
-      dispatch({ type: "ADD_RENTER", payload: renterObj });
+      dispatch({ type: "SIGN_IN", payload: renterObj });
     }
   };
 };
