@@ -1,4 +1,8 @@
-const reducer = (state, action) => {
+const initialState = {
+  renters: []
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
