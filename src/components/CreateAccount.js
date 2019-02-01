@@ -17,7 +17,8 @@ class CreateAccount extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("submitted");
+    const renterObj = this.state;
+    this.props.addRenter(renterObj);
   };
 
   render() {
@@ -58,10 +59,13 @@ class CreateAccount extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addUser: user => {
-      dispatch({ type: "ADD_USER", payload: user });
+    addRenter: renterObj => {
+      dispatch({ type: "ADD_RENTER", payload: renterObj });
     }
   };
 };
 
-export default connect()(CreateAccount);
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateAccount);
