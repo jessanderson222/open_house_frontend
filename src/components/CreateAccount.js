@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { postRenter } from "../thunk/renterThunk";
 
 class CreateAccount extends Component {
   state = {
@@ -15,10 +16,12 @@ class CreateAccount extends Component {
     });
   };
 
+  //just use thunk instead of altering state. call addRenter inside of the thunk. that way it is put on state after clearing through backend.
   handleSubmit = e => {
     e.preventDefault();
     const renterObj = this.state;
-    this.props.addRenter(renterObj);
+    this.props.postRenter(renterObj);
+    // this.props.addRenter(renterObj);
   };
 
   render() {
@@ -59,6 +62,7 @@ class CreateAccount extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
+    postRenter: renterObj => dispatch(postRenter(renterObj)),
     addRenter: renterObj => {
       dispatch({ type: "SIGN_IN", payload: renterObj });
     }
