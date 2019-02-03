@@ -19,6 +19,7 @@ class CreateAccount extends Component {
   //just use thunk instead of altering state. call addRenter inside of the thunk. that way it is put on state after clearing through backend.
   handleSubmit = e => {
     e.preventDefault();
+    // debugger;
     const renterObj = this.state;
     this.props.postRenter(renterObj);
     // this.props.addRenter(renterObj);
