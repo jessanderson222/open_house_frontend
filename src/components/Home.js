@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import CreateAccount from "./CreateAccount";
+import RenterSignInForm from './RenterSignInForm'
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,6 +35,8 @@ class Home extends React.Component {
   render() {
     if (this.state.createAccountClicked === true) {
       return <CreateAccount />;
+    } elseif (this.state.signInClicked === true) {
+      return <RenterSignInForm />
     } else {
       return (
         <div>
