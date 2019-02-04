@@ -1,8 +1,13 @@
-export const addRenter = renterObj => ({ type: "SIGN_IN", payload: renterObj });
+export const addRenter = renterObj => ({
+  type: "SIGN_IN",
+  payload: renterObj
+});
+
 export const signInRenter = renterObj => ({
   type: "SIGN_IN",
   payload: renterObj
 });
+
 export const findRenter = token => {
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/profile", {

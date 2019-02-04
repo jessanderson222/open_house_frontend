@@ -1,26 +1,192 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import { editRenter } from "../thunk/renterThunk";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class EditRenterForm extends React.Component {
-  state = {
-    bedrooms: "",
-    bathrooms: "",
-    distanceToSubway: "",
-    borough: "",
-    petFriendly: false,
-    elevator: false,
-    laundry: false,
-    doorman: false,
-    moveInDate: "",
-    rentMin: "",
-    rentMax: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      bedrooms: "",
+      bathrooms: "",
+      distanceToSubway: "",
+      borough: "",
+      petFriendly: false,
+      elevator: false,
+      laundry: false,
+      doorman: false,
+      moveInDate: new Date(),
+      rentMin: "",
+      rentMax: ""
+    };
+    this.handleDateChange = this.handleDateChange.bind(this);
+  }
+
+  handleDateChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
+
+  handleChange = e => {
+    console.log(e.target);
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state, this.props);
+    this.props.editRenter(this.state, this.props);
   };
 
   render() {
-    console.log(this.state);
-    return <h3>Form</h3>;
+    console.log(this.state, this.props.renter);
+    return (
+      <div>
+        <h3>Looking for...</h3>
+        <form onSubmit={this.handleSubmit}>
+          <label>Bedrooms</label>
+          <select
+            name="bedrooms"
+            onChange={this.handleChange}
+            value={this.state.bedrooms}
+            placeholder={this.state.bedrooms}
+          >
+            <option> </option>
+            <option value={0}>Studio</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+          <br />
+          <label>Bathrooms</label>
+          <select
+            name="bathrooms"
+            onChange={this.handleChange}
+            value={this.state.bathrooms}
+          >
+            <option> </option>
+            <option>1</option>
+            <option>2</option>
+            <option>3+</option>
+          </select>
+          <br />
+          <label>Location</label>
+          <select
+            name="borough"
+            onChange={this.handleChange}
+            value={this.state.borough}
+          >
+            <option> </option>
+            <option>All</option>
+            <option>Brooklyn</option>
+            <option>The Bronx</option>
+            <option>Manhattan</option>
+            <option>Queens</option>
+            <option>Staten Island</option>
+          </select>
+          <br />
+          <label>Rent Min</label>
+          <input
+            type="text"
+            name="rentMin"
+            onChange={this.handleChange}
+            value={this.state.rentMin}
+          />
+          <label>Rent Max</label>
+          <input
+            type="text"
+            name="rentMax"
+            onChange={this.handleChange}
+            value={this.state.rentMax}
+          />
+          <br />
+          <label>Elevator</label>
+          <select
+            name="elevator"
+            onChange={this.handleChange}
+            value={this.state.elevator}
+          >
+            <option> </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
+          <br />
+          <label>Laundry</label>
+          <select
+            name="laundry"
+            onChange={this.handleChange}
+            value={this.state.laundry}
+          >
+            <option> </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
+          <br />
+          <label>Pet Friendly</label>
+          <select
+            name="petFriendly"
+            onChange={this.handleChange}
+            value={this.state.petFriendly}
+          >
+            <option> </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
+          <br />
+          <label>Distance To Subway</label>
+          <select
+            name="distanceToSubway"
+            onChange={this.handleChange}
+            value={this.state.distanceToSubway}
+          >
+            <option> </option>
+            <option value={0.1}>less than 500 feet</option>
+            <option value={0.2}>less than 1000 feet</option>
+            <option value={0.5}>less than half a mile</option>
+            <option value={2.0}>more than half a mile</option>
+          </select>
+          <br />
+          <label> Move In Date</label>
+          <DatePicker
+            name="moveInDate"
+            selected={this.state.moveInDate}
+            onChange={this.handleDateChange}
+          />
+          <br />
+          {this.props.renter ? (
+            <input type="hidden" name="renterId" value={this.props.renter.id} />
+          ) : null}
+          <br />
+          <button>Submit</button>
+        </form>
+      </div>
+    );
   }
 }
 
-export default connect()(EditRenterForm);
+const mapStateToProps = state => {
+  if (state.renter === null) {
+    return null;
+  } else
+    return {
+      renter: state.loggedInRenter
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    editRenter: renterObj => dispatch(editRenter(renterObj))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditRenterForm);

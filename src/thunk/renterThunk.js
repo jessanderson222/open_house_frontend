@@ -45,3 +45,13 @@ export const signInRenter = renter => {
       });
   };
 };
+
+export const editRenter = (form, renter) => dispatch => {
+  // fetch
+  // dispatch an action object using response values from fetch
+  // fetch("google.com").then(res =>
+  //   dispatch({ type: "SOME_ACTION", payload: res })
+  // );
+  console.log(form, renter);
+  // fetch('')
+};
