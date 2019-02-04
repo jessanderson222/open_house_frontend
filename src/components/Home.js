@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import CreateAccount from "./CreateAccount";
 import RenterSignInForm from "./RenterSignInForm";
+import { Redirect } from "react-router-dom";
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,9 +35,9 @@ class Home extends React.Component {
   //render sign in or create account form conditionally on state
   render() {
     if (this.state.createAccountClicked === true) {
-      return <CreateAccount />;
+      return <Redirect to="/signup" />;
     } else if (this.state.signInClicked === true) {
-      return <RenterSignInForm />;
+      return <Redirect to="/login" />;
     } else {
       return (
         <div>

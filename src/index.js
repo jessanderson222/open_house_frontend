@@ -10,6 +10,7 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 //for fetching
 import thunk from "redux-thunk";
+import { BrowserRouter } from "react-router-dom";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 //&& window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -17,7 +18,9 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signInRenter } from "../thunk/renterThunk";
+import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class RenterSignInForm extends Component {
   state = {
@@ -19,9 +21,11 @@ class RenterSignInForm extends Component {
     e.preventDefault();
     const renterObj = this.state;
     this.props.signInRenter(renterObj);
+    this.props.history.push("/profile");
   };
 
   render() {
+    // debugger;
     return (
       <div>
         <h3>Sign In</h3>
@@ -55,7 +59,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RenterSignInForm);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(RenterSignInForm)
+);
