@@ -2,7 +2,7 @@ import { addRenter } from "../actions/renterActions";
 
 export const postRenter = renter => {
   return function(dispatch) {
-    // debugger;
+    debugger;
     return fetch("http://localhost:3000/api/v1/renters", {
       method: "POST",
       headers: {

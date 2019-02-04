@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { postRenter } from "../thunk/renterThunk";
+import { withRouter } from "react-router-dom";
 
 class CreateAccount extends Component {
-  state = {
-    username: "",
-    email: "",
-    password: ""
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleChange = e => {
     console.log(e.target);
     this.setState({
@@ -17,15 +21,16 @@ class CreateAccount extends Component {
   };
 
   //just use thunk instead of altering state. call addRenter inside of the thunk. that way it is put on state after clearing through backend.
-  handleSubmit = e => {
+
+  handleSubmit(e) {
     e.preventDefault();
-    // debugger;
     const renterObj = this.state;
     this.props.postRenter(renterObj);
-    // this.props.addRenter(renterObj);
-  };
+    this.props.history.push("/profile");
+  }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h3>Create Your Account</h3>
@@ -70,7 +75,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CreateAccount);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(CreateAccount)
+);
