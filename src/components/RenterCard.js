@@ -3,8 +3,20 @@ import { connect } from "react-redux";
 
 class RenterCard extends React.Component {
   render() {
-    return <h3>Renter!</h3>;
+    console.log(this.props.renter);
+    debugger;
+    // return <h3>hi</h3>;
+    return <h3>{this.props.renter.username}</h3>;
   }
 }
 
-export default connect()(RenterCard);
+const mapStateToProps = state => {
+  if (state.renter === null) {
+    return null;
+  } else
+    return {
+      renter: state.loggedInRenter
+    };
+};
+
+export default connect(mapStateToProps)(RenterCard);

@@ -25,7 +25,6 @@ class RenterSignInForm extends Component {
   };
 
   render() {
-    // debugger;
     return (
       <div>
         <h3>Sign In</h3>
