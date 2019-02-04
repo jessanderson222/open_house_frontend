@@ -8,6 +8,9 @@ import NavBar from "./NavBar";
 import CreateAccount from "./CreateAccount";
 import RenterSignInForm from "./RenterSignInForm";
 import RenterCard from "./RenterCard";
+import PropertyInfo from "./PropertyInfo";
+import EditRenterInfoForm from "./EditRenterInfoForm";
+import MatchContainer from "./MatchContainer";
 import { findRenter } from "../actions/renterActions";
 
 class App extends Component {
@@ -29,6 +32,12 @@ class App extends Component {
           <Route path="/signup" render={renter => <CreateAccount />} />
           <Route path="/login" render={renter => <RenterSignInForm />} />
           <Route path="/profile" render={renter => <RenterCard />} />
+          <Route
+            path="/editprofile"
+            render={renter => <EditRenterInfoForm />}
+          />
+          <Route path="/aptinfo" render={renter => <PropertyInfo />} />
+          <Route path="/match" render={renter => <MatchContainer />} />
           <Route path="/" render={renter => <Home />} />
         </Switch>
       </div>

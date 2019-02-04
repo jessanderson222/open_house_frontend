@@ -1,12 +1,67 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Route, Switch, withRouter } from "react-router-dom";
+import EditRenterInfoForm from "./EditRenterInfoForm";
+import PropertyInfo from "./PropertyInfo";
+import { Redirect } from "react-router-dom";
 
 class RenterCard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      editInfoClicked: false,
+      matchPropertiesClicked: false
+    };
+  }
+
+  handleEditInfoClick = e => {
+    e.preventDefault();
+    this.setState({
+      editInfoClicked: !this.state.editInfoClicked
+    });
+    console.log(this.state);
+  };
+
+  handleMatchPropertiesClick = e => {
+    e.preventDefault();
+    this.setState({
+      matchPropertiesClicked: !this.state.matchPropertiesClicked
+    });
+    console.log(this.state);
+  };
+
   render() {
-    console.log(this.props.renter);
-    debugger;
+    // console.log(this.props.renter);
+    // debugger;
     // return <h3>hi</h3>;
-    return <h3>{this.props.renter.username}</h3>;
+
+    if (this.props.renter) {
+      if (this.state.editInfoClicked === true) {
+        return <Redirect to="/editprofile" />;
+      } else if (this.state.matchPropertiesClicked === true) {
+        return <Redirect to="/match" />;
+      } else {
+        return (
+          <div>
+            <h3>{this.props.renter.username}</h3>
+            <img
+              height="200px"
+              alt="prof pic"
+              src={this.props.renter.img_url}
+            />
+            <br />
+            <button onClick={this.handleEditInfoClick}>Edit Info</button>
+            <br />
+            <button onClick={this.handleMatchPropertiesClick}>Match</button>
+            <br />
+            <h4>My Matched Properties</h4>
+          </div>
+        );
+      }
+    } else {
+      return <Redirect to="/login" />;
+    }
   }
 }
 
