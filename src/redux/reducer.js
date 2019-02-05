@@ -1,5 +1,6 @@
 const initialState = {
-  loggedInRenter: null
+  loggedInRenter: null,
+  properties: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -8,6 +9,9 @@ const reducer = (state = initialState, action) => {
     case "SIGN_IN":
       return { ...state, loggedInRenter: action.payload };
     //this takes care of frontend, form data => thunk => thunk starts fetch => data sent to store
+    case "GET_PROPERTIES":
+      // debugger;
+      return { ...state, properties: action.payload };
     default:
       return state;
   }
