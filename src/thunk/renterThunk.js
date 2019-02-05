@@ -52,7 +52,7 @@ export const editRenter = (form, renter) => dispatch => {
   // fetch("google.com").then(res =>
   //   dispatch({ type: "SOME_ACTION", payload: res })
   // );
-  debugger;
+  // debugger;
   console.log(renter);
   return fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
     method: "PATCH",

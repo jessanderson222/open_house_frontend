@@ -11,9 +11,18 @@ class RenterCard extends React.Component {
 
     this.state = {
       editInfoClicked: false,
-      matchPropertiesClicked: false
+      matchPropertiesClicked: false,
+      pictureClicked: false
     };
   }
+
+  handlePictureClick = e => {
+    e.preventDefault();
+    this.setState({
+      pictureClicked: !this.state.pictureClicked
+    });
+    console.log(this.state.pictureClicked);
+  };
 
   handleEditInfoClick = e => {
     e.preventDefault();
@@ -41,13 +50,16 @@ class RenterCard extends React.Component {
         return <Redirect to="/editprofile" />;
       } else if (this.state.matchPropertiesClicked === true) {
         return <Redirect to="/match" />;
+      } else if (this.state.pictureClicked === true) {
+        return <h3>feature coming soon :)</h3>;
       } else {
         return (
           <div>
             <h3>{this.props.renter.username}</h3>
             <img
+              onClick={this.handlePictureClick}
               height="200px"
-              alt="prof pic"
+              alt="click to add profile picture"
               src={this.props.renter.img_url}
             />
             <br />

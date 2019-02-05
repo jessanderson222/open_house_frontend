@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import { Redirect } from "react-router-dom";
 import { editRenter } from "../thunk/renterThunk";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -42,6 +43,7 @@ class EditRenterForm extends React.Component {
     e.preventDefault();
     console.log(this.state, this.props);
     this.props.editRenter(this.state, this.props);
+    this.props.history.push("/profile");
   };
 
   render() {
@@ -113,18 +115,16 @@ class EditRenterForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.elevator}
           >
-            <option> </option>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
-          <br />
+
           <label>Laundry</label>
           <select
             name="laundry"
             onChange={this.handleChange}
             value={this.state.laundry}
           >
-            <option> </option>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
@@ -135,7 +135,15 @@ class EditRenterForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.petFriendly}
           >
-            <option> </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
+          <label>Doorman</label>
+          <select
+            name="doorman"
+            onChange={this.handleChange}
+            value={this.state.doorman}
+          >
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
@@ -186,7 +194,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EditRenterForm);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(EditRenterForm)
+);
