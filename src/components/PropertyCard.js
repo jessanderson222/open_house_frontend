@@ -4,7 +4,13 @@ import PropertyInfo from "./PropertyInfo";
 
 class PropertyCard extends React.Component {
   render() {
-    return <h5>:)</h5>;
+    return (
+      <div>
+        <PropertyInfo property={this.props.property} />
+        <button>NO</button>
+        <button>YES</button>
+      </div>
+    );
   }
 }
 

@@ -4,10 +4,10 @@ import PropertyCard from "./PropertyCard";
 
 class MatchContainer extends React.Component {
   render() {
-    console.log(this.props.properties);
     return (
       <div>
-        <h3>Make a Match</h3>
+        <h2>Make a Match</h2>
+        {/* <button>Back to My Profile</button> */}
         <div>
           {this.props.properties
             ? this.props.properties.map((property, i) => (
