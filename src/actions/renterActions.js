@@ -18,6 +18,7 @@ export const findRenter = token => {
       }
     })
       .then(res => res.json())
-      .then(res => dispatch(signInRenter(res.renter)), console.log("done"));
+      .then(res => dispatch(signInRenter(res.renter)));
+    // dispatch(signInRenter(res.renter))
   };
 };
