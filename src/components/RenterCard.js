@@ -51,9 +51,15 @@ class RenterCard extends React.Component {
               src={this.props.renter.img_url}
             />
             <br />
-            <button onClick={this.handleEditInfoClick}>Edit Info</button>
+            <button class="small-button" onClick={this.handleEditInfoClick}>
+              Edit Info
+            </button>
+
             <br />
-            <button onClick={this.handleMatchPropertiesClick}>Match</button>
+            <br />
+            <button class="button" onClick={this.handleMatchPropertiesClick}>
+              Match
+            </button>
             <br />
             <h4>My Matched Properties</h4>
           </div>

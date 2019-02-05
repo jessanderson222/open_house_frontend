@@ -45,7 +45,7 @@ class RenterSignInForm extends Component {
             value={this.state.password}
           />
           <br />
-          <button>Sign In</button>
+          <button class="form-button">Sign In</button>
         </form>
       </div>
     );

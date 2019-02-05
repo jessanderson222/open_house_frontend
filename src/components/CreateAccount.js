@@ -59,7 +59,7 @@ class CreateAccount extends Component {
             value={this.state.password}
           />
           <br />
-          <button>Sign Up</button>
+          <button class="form-button">Sign Up</button>
         </form>
       </div>
     );

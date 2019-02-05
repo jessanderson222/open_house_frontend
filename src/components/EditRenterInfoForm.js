@@ -182,7 +182,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editRenter: renterObj => dispatch(editRenter(renterObj))
+    editRenter: (form, id) => dispatch(editRenter(form, id))
   };
 };
 

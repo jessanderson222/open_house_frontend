@@ -52,6 +52,32 @@ export const editRenter = (form, renter) => dispatch => {
   // fetch("google.com").then(res =>
   //   dispatch({ type: "SOME_ACTION", payload: res })
   // );
-  console.log(form, renter);
+  debugger;
+  console.log(renter);
+  return fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      renter: {
+        bathrooms: form.bathrooms,
+        bedrooms: form.bedrooms,
+        borough: form.borough,
+        distance_to_subway: form.distanceToSubway,
+        doorman: form.doorman,
+        elevator: form.elevator,
+        laundry: form.laundry,
+        move_in_date: form.moveInDate,
+        pet_friendly: form.petFriendly,
+        rent_max: form.rentMax,
+        rent_min: form.rentMin,
+        start_date: form.startDate
+      }
+    })
+  })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(console.error);
   // fetch('')
 };

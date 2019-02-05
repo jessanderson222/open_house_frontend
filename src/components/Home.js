@@ -43,7 +43,9 @@ class Home extends React.Component {
         <div>
           <h1>Welcome to OpenHouse!</h1>
           <h2>Find an apartment that's the perfect match.</h2>
-          <button onClick={this.handleSignInClick}>Sign In</button>
+          <button class="button" onClick={this.handleSignInClick}>
+            Sign In
+          </button>
           <p onClick={this.handleCreateAccountClick}>
             Not a member? Create an account.
           </p>
