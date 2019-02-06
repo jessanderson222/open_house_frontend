@@ -48,6 +48,10 @@ class PropertyInfo extends React.Component {
           />
           <br />
           <p>
+            {this.props.property.bathrooms === 1
+              ? this.props.property.bathrooms + " bathroom"
+              : this.props.property.bathrooms + " bathrooms"}
+            <br />
             {this.props.property.neighborhood}
             <br />${this.props.property.rent}
           </p>
