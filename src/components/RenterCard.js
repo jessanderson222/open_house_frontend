@@ -41,7 +41,7 @@ class RenterCard extends React.Component {
   };
 
   render() {
-    // console.log(this.props.renter);
+    console.log(this.props.renter);
     // debugger;
     // return <h3>hi</h3>;
 
@@ -78,7 +78,8 @@ class RenterCard extends React.Component {
         );
       }
     } else {
-      return <Redirect to="/login" />;
+      // return <Redirect to="/login" />;
+      return null;
     }
   }
 }

@@ -8,10 +8,10 @@ class NavBar extends Component {
       <ul className="navbar">
         {/* <Link to="/">
           <li className="navitem">Home</li>
-        </Link> */}
-        {/* <Link to="/profile">
+        </Link>{" "} */}
+        <Link to="/profile">
           <li className="navitem">My Profile</li>
-        </Link> */}
+        </Link>
         {/* <Link to="/login">
           <li className="navitem">Login</li>
         </Link>
