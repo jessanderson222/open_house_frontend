@@ -1,6 +1,7 @@
 const initialState = {
   loggedInRenter: null,
-  properties: []
+  properties: [],
+  matches: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +13,8 @@ const reducer = (state = initialState, action) => {
     case "GET_PROPERTIES":
       // debugger;
       return { ...state, properties: action.payload };
+    case "GET_MATCHES":
+      return { ...state, matches: action.payload };
     default:
       return state;
   }

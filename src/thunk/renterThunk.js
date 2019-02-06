@@ -25,10 +25,10 @@ export const postRenter = renter => {
 export const signInRenter = renter => {
   // debugger;
   return function(dispatch) {
-    // debugger;
     return fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ` + localStorage.getItem("token"),
         "Content-Type": "application/json",
         Accepts: "application/json"
       },
@@ -41,6 +41,7 @@ export const signInRenter = renter => {
     })
       .then(resp => resp.json())
       .then(data => {
+        console.log(data);
         localStorage.setItem("token", data.jwt);
         dispatch(addRenter(data.renter));
       });
@@ -58,6 +59,7 @@ export const editRenter = (form, renter) => dispatch => {
   return fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
     method: "PATCH",
     headers: {
+      Authorization: `Bearer ` + localStorage.getItem("token"),
       "Content-Type": "application/json"
     },
     body: JSON.stringify({

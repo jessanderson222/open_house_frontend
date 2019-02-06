@@ -13,10 +13,12 @@ import EditRenterInfoForm from "./EditRenterInfoForm";
 import MatchContainer from "./MatchContainer";
 import { findRenter } from "../actions/renterActions";
 import { getProperties } from "../thunk/propertyThunk";
+import { getMatches } from "../thunk/matchThunk";
 
 class App extends Component {
   componentDidMount() {
     this.props.getProperties();
+    this.props.getMatches();
     let token = localStorage.getItem("token");
     if (token) {
       this.props.findRenter(token);
@@ -50,7 +52,8 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     findRenter: token => dispatch(findRenter(token)),
-    getProperties: () => dispatch(getProperties())
+    getProperties: () => dispatch(getProperties()),
+    getMatches: () => dispatch(getMatches())
   };
 };
 

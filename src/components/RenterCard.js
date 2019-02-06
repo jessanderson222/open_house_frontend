@@ -42,7 +42,7 @@ class RenterCard extends React.Component {
 
   render() {
     console.log(this.props.renter);
-    // debugger;
+
     // return <h3>hi</h3>;
 
     if (this.props.renter) {
@@ -73,7 +73,9 @@ class RenterCard extends React.Component {
             </button>
             <br />
             <h4>My Matched Properties</h4>
-            {/* <div>{this.state.renter ? this.state.renter.matches.}</div> */}
+            {/* <div>{this.state.renter ? this.state.renter.matches.map(match => (
+              <
+            ))}</div> */}
           </div>
         );
       }
