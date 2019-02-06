@@ -10,7 +10,7 @@ import RenterSignInForm from "./RenterSignInForm";
 import RenterCard from "./RenterCard";
 import PropertyInfo from "./PropertyInfo";
 import EditRenterInfoForm from "./EditRenterInfoForm";
-import MatchContainer from "./MatchContainer";
+import PropertyContainer from "./PropertyContainer";
 import { findRenter } from "../actions/renterActions";
 import { getProperties } from "../thunk/propertyThunk";
 import { getMatches } from "../thunk/matchThunk";
@@ -41,7 +41,7 @@ class App extends Component {
             render={renter => <EditRenterInfoForm />}
           />
           <Route path="/aptinfo" render={renter => <PropertyInfo />} />
-          <Route path="/match" render={renter => <MatchContainer />} />
+          <Route path="/match" render={renter => <PropertyContainer />} />
           <Route path="/" render={renter => <Home />} />
         </Switch>
       </div>

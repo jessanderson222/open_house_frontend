@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import EditRenterInfoForm from "./EditRenterInfoForm";
 import PropertyInfo from "./PropertyInfo";
 import { Redirect } from "react-router-dom";
+import MatchContainer from "./MatchContainer";
 
 class RenterCard extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class RenterCard extends React.Component {
   };
 
   render() {
-    console.log(this.props.renter);
+    console.log(this.props);
 
     // return <h3>hi</h3>;
 
@@ -72,10 +73,7 @@ class RenterCard extends React.Component {
               Match
             </button>
             <br />
-            <h4>My Matched Properties</h4>
-            {/* <div>{this.state.renter ? this.state.renter.matches.map(match => (
-              <
-            ))}</div> */}
+            <MatchContainer />
           </div>
         );
       }
