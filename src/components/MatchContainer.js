@@ -7,11 +7,14 @@ class MatchContainer extends React.Component {
     console.log(this.props);
     return (
       <div>
-        {this.props.matches
-          ? this.props.matches.map((match, i) => (
-              <MatchCard parent="MatchContainer" key={i} match={match} />
-            ))
-          : null}
+        <h4>My Matches</h4>
+        <div>
+          {this.props.matches
+            ? this.props.matches.map((match, i) => (
+                <MatchCard parent="MatchContainer" key={i} match={match} />
+              ))
+            : null}
+        </div>
       </div>
     );
   }

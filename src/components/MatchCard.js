@@ -18,6 +18,9 @@ class MatchCard extends React.Component {
             alt="match"
             src={this.props.match.property.img_1}
           />
+          <br />
+          <button>Realtor Info</button>
+          <button>Delete</button>
         </div>
       );
     } else {
