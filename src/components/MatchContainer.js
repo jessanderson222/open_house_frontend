@@ -4,6 +4,7 @@ import PropertyCard from "./PropertyCard";
 
 class MatchContainer extends React.Component {
   render() {
+    // console.log(this.props);
     return (
       <div>
         <h2>Make a Match</h2>

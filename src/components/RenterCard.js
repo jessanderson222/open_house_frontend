@@ -66,7 +66,6 @@ class RenterCard extends React.Component {
             <button class="small-button" onClick={this.handleEditInfoClick}>
               Edit Info
             </button>
-
             <br />
             <br />
             <button class="button" onClick={this.handleMatchPropertiesClick}>
@@ -74,6 +73,7 @@ class RenterCard extends React.Component {
             </button>
             <br />
             <h4>My Matched Properties</h4>
+            {/* <div>{this.state.renter ? this.state.renter.matches.}</div> */}
           </div>
         );
       }

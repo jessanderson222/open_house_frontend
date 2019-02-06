@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 
 class PropertyInfo extends React.Component {
   render() {
-    // console.log(this.props);
+    console.log(this.props);
+
     return (
       <div>
         <h3>

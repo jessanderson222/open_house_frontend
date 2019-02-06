@@ -1,6 +1,5 @@
 export const postMatch = (renter, property) => {
   return function(dispatch) {
-    debugger;
     return fetch("http://localhost:3000/api/v1/matches", {
       method: "POST",
       headers: {

@@ -26,19 +26,23 @@ class PropertyCard extends React.Component {
   };
 
   render() {
-    // console.log(this.props.property);
-    if (this.state.noButtonClicked === true) {
-      return <h4>ew I hate it</h4>;
-    } else if (this.state.yesButtonClicked === true) {
-      return <h4>oh I love it</h4>;
+    console.log(this.props);
+    if (this.props.property.rent <= this.props.renter.rent_max) {
+      if (this.state.noButtonClicked === true) {
+        return <h4>ew I hate it</h4>;
+      } else if (this.state.yesButtonClicked === true) {
+        return <h4>oh I love it</h4>;
+      } else {
+        return (
+          <div>
+            <PropertyInfo property={this.props.property} />
+            <button onClick={this.handleNoButtonClick}>NO</button>
+            <button onClick={this.handleYesButtonClick}>YES</button>
+          </div>
+        );
+      }
     } else {
-      return (
-        <div>
-          <PropertyInfo property={this.props.property} />
-          <button onClick={this.handleNoButtonClick}>NO</button>
-          <button onClick={this.handleYesButtonClick}>YES</button>
-        </div>
-      );
+      return null;
     }
   }
 }

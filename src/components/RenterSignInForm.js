@@ -19,8 +19,7 @@ class RenterSignInForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const renterObj = this.state;
-    this.props.signInRenter(renterObj);
+    this.props.signInRenter(this.state);
     this.props.history.push("/profile");
   };
 
