@@ -19,9 +19,9 @@ class NavBar extends Component {
     console.log(this.props);
     return (
       <ul className="navbar">
-        {/* <Link to="/">
+        <Link to="/">
           <li className="navitem">Home</li>
-        </Link>{" "} */}
+        </Link>{" "}
         <Link to="/profile">
           <li className="navitem">My Profile</li>
         </Link>

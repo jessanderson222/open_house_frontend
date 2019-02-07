@@ -5,6 +5,7 @@ import EditRenterInfoForm from "./EditRenterInfoForm";
 import PropertyInfo from "./PropertyInfo";
 import { Redirect } from "react-router-dom";
 import MatchContainer from "./MatchContainer";
+import { findRenter } from "../actions/renterActions";
 
 class RenterCard extends React.Component {
   constructor(props) {
@@ -15,6 +16,13 @@ class RenterCard extends React.Component {
       matchPropertiesClicked: false,
       pictureClicked: false
     };
+  }
+
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+    if (token) {
+      this.props.findRenter(token);
+    }
   }
 
   handlePictureClick = e => {
@@ -92,4 +100,13 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(RenterCard);
+const mapDispatchToProps = dispatch => {
+  return {
+    findRenter: token => dispatch(findRenter(token))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RenterCard);

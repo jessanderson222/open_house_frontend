@@ -13,15 +13,15 @@ class EditRenterForm extends React.Component {
     this.state = {
       bedrooms: "",
       bathrooms: "",
-      distanceToSubway: "",
+      distance_to_subway: "",
       borough: "",
-      petFriendly: false,
+      pet_friendly: false,
       elevator: false,
       laundry: false,
       doorman: false,
-      moveInDate: new Date(),
-      rentMin: "",
-      rentMax: ""
+      move_in_date: new Date(),
+      rent_min: "",
+      rent_max: ""
     };
     this.handleDateChange = this.handleDateChange.bind(this);
   }
@@ -47,6 +47,7 @@ class EditRenterForm extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h3>Looking for...</h3>
@@ -95,16 +96,16 @@ class EditRenterForm extends React.Component {
           <label>Rent Min</label>
           <input
             type="text"
-            name="rentMin"
-            placeholder={this.props.renter ? this.props.renter.rent_min : null}
+            name="rent_min"
+            // placeholder={this.props.renter ? this.props.renter.rent_min : null}
             onChange={this.handleChange}
             value={this.state.rentMin}
           />
           <label>Rent Max</label>
           <input
             type="text"
-            name="rentMax"
-            placeholder={this.props.renter ? this.props.renter.rent_max : null}
+            name="rent_max"
+            // placeholder={this.props.renter ? this.props.renter.rent_max : null}
             onChange={this.handleChange}
             value={this.state.rentMax}
           />
@@ -131,7 +132,7 @@ class EditRenterForm extends React.Component {
           <br />
           <label>Pet Friendly</label>
           <select
-            name="petFriendly"
+            name="pet_friendly"
             onChange={this.handleChange}
             value={this.state.petFriendly}
           >
@@ -150,7 +151,7 @@ class EditRenterForm extends React.Component {
           <br />
           <label>Distance To Subway</label>
           <select
-            name="distanceToSubway"
+            name="distance_to_subway"
             onChange={this.handleChange}
             value={this.state.distanceToSubway}
           >
@@ -163,13 +164,17 @@ class EditRenterForm extends React.Component {
           <br />
           <label> Move In Date</label>
           <DatePicker
-            name="moveInDate"
+            name="move_in_date"
             selected={this.state.moveInDate}
             onChange={this.handleDateChange}
           />
           <br />
           {this.props.renter ? (
-            <input type="hidden" name="renterId" value={this.props.renter.id} />
+            <input
+              type="hidden"
+              name="renter_id"
+              value={this.props.renter.id}
+            />
           ) : null}
           <br />
           <button className="small-button">Submit</button>

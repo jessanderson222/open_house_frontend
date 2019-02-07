@@ -2,7 +2,7 @@ import { addRenter } from "../actions/renterActions";
 import { updateRenter } from "../actions/renterActions";
 
 export const postRenter = renter => {
-  debugger;
+  // debugger;
   return function(dispatch) {
     return fetch("http://localhost:3000/api/v1/renters", {
       method: "POST",
@@ -50,17 +50,20 @@ export const signInRenter = renter => {
 };
 
 export const editRenter = (form, renter) => dispatch => {
-  console.log(renter);
-  return fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
-    method: "PATCH",
-    headers: {
-      Authorization: `Bearer ` + localStorage.getItem("token"),
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(form)
-  })
-    .then(res => res.json())
-    .then(data => dispatch(updateRenter(data)))
-    .catch(console.error);
+  console.log(form);
+  return (
+    fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ` + localStorage.getItem("token"),
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      // .then(data => dispatch(updateRenter(data)))
+      .catch(console.error)
+  );
   // fetch('')
 };
