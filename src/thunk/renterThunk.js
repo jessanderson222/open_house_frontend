@@ -1,4 +1,5 @@
 import { addRenter } from "../actions/renterActions";
+import { updateRenter } from "../actions/renterActions";
 
 export const postRenter = renter => {
   debugger;
@@ -49,12 +50,6 @@ export const signInRenter = renter => {
 };
 
 export const editRenter = (form, renter) => dispatch => {
-  // fetch
-  // dispatch an action object using response values from fetch
-  // fetch("google.com").then(res =>
-  //   dispatch({ type: "SOME_ACTION", payload: res })
-  // );
-  // debugger;
   console.log(renter);
   return fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
     method: "PATCH",
@@ -80,7 +75,7 @@ export const editRenter = (form, renter) => dispatch => {
     })
   })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => dispatch(updateRenter(data)))
     .catch(console.error);
   // fetch('')
 };

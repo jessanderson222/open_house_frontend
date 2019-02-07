@@ -1,4 +1,5 @@
 import { postMatches } from "../actions/matchActions";
+import { removeMatch } from "../actions/matchActions";
 
 export const postMatch = (renter, property) => {
   return function(dispatch) {
@@ -33,7 +34,6 @@ export const getMatches = () => dispatch => {
 };
 
 export const deleteMatch = match => dispatch => {
-  // debugger;
   return fetch(`http://localhost:3000/api/v1/matches/${match.id}`, {
     method: "DELETE",
     headers: {

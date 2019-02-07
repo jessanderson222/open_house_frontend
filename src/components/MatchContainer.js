@@ -11,7 +11,12 @@ class MatchContainer extends React.Component {
         <div>
           {this.props.matches
             ? this.props.matches.map((match, i) => (
-                <MatchCard parent="MatchContainer" key={i} match={match} />
+                <MatchCard
+                  parent="MatchContainer"
+                  delete={this.props.deleteMatch}
+                  key={i}
+                  match={match}
+                />
               ))
             : null}
         </div>
@@ -30,4 +35,13 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(MatchContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteMatch: match => dispatch({ type: "REMOVE_MATCH", payload: match })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MatchContainer);

@@ -17,10 +17,13 @@ class MatchCard extends React.Component {
 
   handleDeleteMatch = e => {
     e.preventDefault();
-    this.setState({
-      deleteMatch: !this.state.deleteMatch
-    });
-    this.props.deleteMatch(this.props.match);
+    if (this.props) {
+      this.props.delete(this.props.match);
+
+      this.props.deleteMatch(this.props.match);
+    } else {
+      return null;
+    }
   };
 
   render() {

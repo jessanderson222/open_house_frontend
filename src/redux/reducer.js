@@ -15,6 +15,13 @@ const reducer = (state = initialState, action) => {
       return { ...state, properties: action.payload };
     case "GET_MATCHES":
       return { ...state, matches: action.payload };
+    case "EDIT_RENTER":
+      return { ...state, loggedInRenter: action.payload };
+    case "REMOVE_MATCH":
+      return {
+        ...state,
+        matches: state.matches.filter(match => match !== action.payload)
+      };
     default:
       return state;
   }

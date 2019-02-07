@@ -22,3 +22,8 @@ export const findRenter = token => {
     // dispatch(signInRenter(res.renter))
   };
 };
+
+export const updateRenter = renter => ({
+  type: "EDIT_RENTER",
+  payload: renter
+});
