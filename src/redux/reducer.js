@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case "SIGN_IN":
       return { ...state, loggedInRenter: action.payload };
@@ -28,6 +28,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         matches: state.matches.filter(match => match !== action.payload)
+      };
+    case "LOG_OUT":
+      return {
+        ...state,
+        loggedInRenter: action.payload
       };
     default:
       return state;

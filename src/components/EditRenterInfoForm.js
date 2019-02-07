@@ -63,7 +63,7 @@ class EditRenterForm extends React.Component {
             <option>1</option>
             <option>2</option>
             <option>3</option>
-            <option>4+</option>
+            <option>4</option>
           </select>
           <br />
           <label>Bathrooms</label>
@@ -75,7 +75,7 @@ class EditRenterForm extends React.Component {
             <option> </option>
             <option>1</option>
             <option>2</option>
-            <option>3+</option>
+            <option>3</option>
           </select>
           <br />
           <label>Location</label>
@@ -83,15 +83,13 @@ class EditRenterForm extends React.Component {
             name="borough"
             onChange={this.handleChange}
             value={this.state.borough}
-            initialValue={this.props.renter ? this.props.renter.borough : null}
+            // placeholder={this.props.renter ? this.props.renter.borough : null}
           >
-            <option> </option>
-            <option>All</option>
-            <option>Brooklyn</option>
-            <option>The Bronx</option>
-            <option>Manhattan</option>
-            <option>Queens</option>
-            <option>Staten Island</option>
+            <option value="Brooklyn">Brooklyn</option>
+            <option value="The Bronx">The Bronx</option>
+            <option value="Manhattan">Manhattan</option>
+            <option value="Queens">Queens</option>
+            <option value="Staten Island">Staten Island</option>
           </select>
           <br />
           <label>Rent Min</label>

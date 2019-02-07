@@ -78,8 +78,7 @@ class RenterCard extends React.Component {
         );
       }
     } else {
-      // return <Redirect to="/login" />;
-      return null;
+      return <h4>Please Sign In</h4>;
     }
   }
 }

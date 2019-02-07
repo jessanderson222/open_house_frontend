@@ -1,27 +1,36 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropertyCard from "./PropertyCard";
+import { getProperties } from "../thunk/propertyThunk";
 
 class PropertyContainer extends React.Component {
+  componentDidMount() {
+    this.props.getProperties();
+  }
+
   render() {
-    // console.log(this.props);
-    return (
-      <div>
-        <h2>Make a Match</h2>
-        {/* <button>Back to My Profile</button> */}
+    console.log(this.props);
+    if (this.props.renter) {
+      return (
         <div>
-          {this.props.properties
-            ? this.props.properties.map((property, i) => (
-                <PropertyCard
-                  parent="PropertyContainer"
-                  key={i}
-                  property={property}
-                />
-              ))
-            : null}
+          <h2>Make a Match</h2>
+          {/* <button>Back to My Profile</button> */}
+          <div>
+            {this.props.properties.length
+              ? this.props.properties.map((property, i) => (
+                  <PropertyCard
+                    parent="PropertyContainer"
+                    key={i}
+                    property={property}
+                  />
+                ))
+              : null}
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <h4>Please Sign In</h4>;
+    }
   }
 }
 
@@ -30,8 +39,18 @@ const mapStateToProps = state => {
     return null;
   } else
     return {
-      properties: state.properties
+      properties: state.properties,
+      renter: state.loggedInRenter
     };
 };
 
-export default connect(mapStateToProps)(PropertyContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    getProperties: () => dispatch(getProperties())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PropertyContainer);

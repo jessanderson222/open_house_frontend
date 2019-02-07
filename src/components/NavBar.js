@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
-import { connect } from "net";
+import { connect } from "react-redux";
+import { logOut } from "../actions/renterActions";
 
 class NavBar extends Component {
+  handleLogOut = e => {
+    e.preventDefault();
+    let token = localStorage.getItem("token");
+    if (token) {
+      localStorage.clear();
+      console.log(localStorage);
+      this.props.logOut();
+    }
+  };
+
   render() {
+    console.log(this.props);
     return (
       <ul className="navbar">
         {/* <Link to="/">
@@ -19,10 +31,30 @@ class NavBar extends Component {
         <Link to="/signup">
           <li className="navitem">Sign Up</li>
         </Link> */}
-        <button>Log Out</button>
+        <button onClick={this.handleLogOut}>Log Out</button>
       </ul>
     );
   }
 }
 
-export default withRouter(NavBar);
+const mapStateToProps = state => {
+  if (state.renter === null) {
+    return null;
+  } else
+    return {
+      renter: state.loggedInRenter
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut: () => dispatch(logOut())
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(NavBar)
+);

@@ -27,7 +27,7 @@ class MatchCard extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.renter.id === this.props.match.renter_id) {
       if (this.state.realtorInfo === true) {
         return (

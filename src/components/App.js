@@ -18,7 +18,7 @@ import AddRenterPictureForm from "./AddRenterPictureForm";
 
 class App extends Component {
   componentDidMount() {
-    this.props.getProperties();
+    // this.props.getProperties();
     this.props.getMatches();
     let token = localStorage.getItem("token");
     if (token) {

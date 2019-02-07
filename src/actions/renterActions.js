@@ -8,6 +8,11 @@ export const signInRenter = renterObj => ({
   payload: renterObj
 });
 
+export const logOut = () => ({
+  type: "LOG_OUT",
+  payload: null
+});
+
 export const findRenter = token => {
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/profile", {
