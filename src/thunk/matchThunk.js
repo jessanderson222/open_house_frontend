@@ -1,5 +1,6 @@
 import { postMatches } from "../actions/matchActions";
 import { removeMatch } from "../actions/matchActions";
+import { addMatchToDom } from "../actions/matchActions";
 
 export const postMatch = (renter, property) => {
   return function(dispatch) {
@@ -18,7 +19,7 @@ export const postMatch = (renter, property) => {
       })
     })
       .then(resp => resp.json())
-      .then(data => console.log(data));
+      .then(data => dispatch(addMatchToDom(data)));
   };
 };
 

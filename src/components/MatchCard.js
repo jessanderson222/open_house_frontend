@@ -41,6 +41,7 @@ class MatchCard extends React.Component {
                 ? "Studio"
                 : this.props.match.property.bedrooms + " Bedroom"}{" "}
               Apartment in {this.props.match.property.borough}
+              <br />${this.props.match.property.rent}
             </p>
             <img
               height="80px"

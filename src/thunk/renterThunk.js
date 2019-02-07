@@ -57,22 +57,7 @@ export const editRenter = (form, renter) => dispatch => {
       Authorization: `Bearer ` + localStorage.getItem("token"),
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      renter: {
-        bathrooms: form.bathrooms,
-        bedrooms: form.bedrooms,
-        borough: form.borough,
-        distance_to_subway: form.distanceToSubway,
-        doorman: form.doorman,
-        elevator: form.elevator,
-        laundry: form.laundry,
-        move_in_date: form.moveInDate,
-        pet_friendly: form.petFriendly,
-        rent_max: form.rentMax,
-        rent_min: form.rentMin,
-        start_date: form.startDate
-      }
-    })
+    body: JSON.stringify(form)
   })
     .then(res => res.json())
     .then(data => dispatch(updateRenter(data)))

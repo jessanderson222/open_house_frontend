@@ -52,7 +52,7 @@ class RenterCard extends React.Component {
       } else if (this.state.matchPropertiesClicked === true) {
         return <Redirect to="/match" />;
       } else if (this.state.pictureClicked === true) {
-        return <h3>feature coming soon :)</h3>;
+        return <Redirect to="/addpicture" />;
       } else {
         return (
           <div>

@@ -47,7 +47,6 @@ class EditRenterForm extends React.Component {
   };
 
   render() {
-    console.log(this.state, this.props.renter);
     return (
       <div>
         <h3>Looking for...</h3>
@@ -84,6 +83,7 @@ class EditRenterForm extends React.Component {
             name="borough"
             onChange={this.handleChange}
             value={this.state.borough}
+            initialValue={this.props.renter ? this.props.renter.borough : null}
           >
             <option> </option>
             <option>All</option>
@@ -98,6 +98,7 @@ class EditRenterForm extends React.Component {
           <input
             type="text"
             name="rentMin"
+            placeholder={this.props.renter ? this.props.renter.rent_min : null}
             onChange={this.handleChange}
             value={this.state.rentMin}
           />
@@ -105,6 +106,7 @@ class EditRenterForm extends React.Component {
           <input
             type="text"
             name="rentMax"
+            placeholder={this.props.renter ? this.props.renter.rent_max : null}
             onChange={this.handleChange}
             value={this.state.rentMax}
           />

@@ -19,6 +19,7 @@ class NavBar extends Component {
         <Link to="/signup">
           <li className="navitem">Sign Up</li>
         </Link> */}
+        <button>Log Out</button>
       </ul>
     );
   }

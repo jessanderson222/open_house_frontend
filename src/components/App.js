@@ -14,6 +14,7 @@ import PropertyContainer from "./PropertyContainer";
 import { findRenter } from "../actions/renterActions";
 import { getProperties } from "../thunk/propertyThunk";
 import { getMatches } from "../thunk/matchThunk";
+import AddRenterPictureForm from "./AddRenterPictureForm";
 
 class App extends Component {
   componentDidMount() {
@@ -42,6 +43,10 @@ class App extends Component {
           />
           <Route path="/aptinfo" render={renter => <PropertyInfo />} />
           <Route path="/match" render={renter => <PropertyContainer />} />
+          <Route
+            path="/addpicture"
+            render={renter => <AddRenterPictureForm />}
+          />
           <Route path="/" render={renter => <Home />} />
         </Switch>
       </div>

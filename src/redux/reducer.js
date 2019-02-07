@@ -1,3 +1,5 @@
+import { stat } from "fs";
+
 const initialState = {
   loggedInRenter: null,
   properties: [],
@@ -17,6 +19,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, matches: action.payload };
     case "EDIT_RENTER":
       return { ...state, loggedInRenter: action.payload };
+    case "ADD_MATCH":
+      return {
+        ...state,
+        matches: [...state.matches, action.payload]
+      };
     case "REMOVE_MATCH":
       return {
         ...state,
