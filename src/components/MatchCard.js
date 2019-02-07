@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { deleteMatch } from "../thunk/matchThunk";
 
 class MatchCard extends React.Component {
   state = {
-    realtorInfo: false
+    realtorInfo: false,
+    deleteMatch: false
   };
 
   handleRealtorInfoClick = e => {
@@ -13,8 +15,16 @@ class MatchCard extends React.Component {
     });
   };
 
+  handleDeleteMatch = e => {
+    e.preventDefault();
+    this.setState({
+      deleteMatch: !this.state.deleteMatch
+    });
+    this.props.deleteMatch(this.props.match);
+  };
+
   render() {
-    console.log(this.props, this.state);
+    console.log(this.props);
     if (this.props.renter.id === this.props.match.renter_id) {
       if (this.state.realtorInfo === true) {
         return (
@@ -35,8 +45,15 @@ class MatchCard extends React.Component {
               src={this.props.match.property.img_1}
             />
             <br />
-            <button onClick={this.handleRealtorInfoClick}>Realtor Info</button>
-            <button>Delete</button>
+            <button
+              className="small-button"
+              onClick={this.handleRealtorInfoClick}
+            >
+              Realtor Info
+            </button>
+            <button onClick={this.handleDeleteMatch} className="small-button">
+              Delete
+            </button>
           </div>
         );
       }
@@ -55,4 +72,13 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(MatchCard);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteMatch: match => dispatch(deleteMatch(match))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MatchCard);

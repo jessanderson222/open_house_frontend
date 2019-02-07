@@ -31,3 +31,15 @@ export const getMatches = () => dispatch => {
     .then(res => res.json())
     .then(data => dispatch(postMatches(data)));
 };
+
+export const deleteMatch = match => dispatch => {
+  // debugger;
+  return fetch(`http://localhost:3000/api/v1/matches/${match.id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ` + localStorage.getItem("token")
+    }
+  })
+    .then(res => res.json())
+    .then(data => console.log(data));
+};

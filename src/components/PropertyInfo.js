@@ -18,18 +18,29 @@ class PropertyInfo extends React.Component {
     if (this.state.imageClick === true) {
       return (
         <div onClick={this.handleImageClick}>
+          <h3>
+            {this.props.property.bedrooms === 0
+              ? "Studio"
+              : this.props.property.bedrooms + " Bedroom"}{" "}
+            Apartment in {this.props.property.borough}
+          </h3>
           <img alt="" height="300px" src={this.props.property.img_2} />
           <br />
           <p>
             {this.props.property.move_in_date
               ? "Move in " + this.props.property.move_in_date
               : null}
+            <br />
+            {this.props.property.distance_to_subway} miles to subway
+            <br />
+            {this.props.property.doorman ? "Doorman Building" : null}
+            <br />
+            {this.props.property.pet_friendly ? "Pets Allowed" : null}
+            <br />
+            {this.props.property.laundry ? "Laundry in building" : null}
+            <br />
+            {this.props.property.elevator ? "Elevator Building" : null}
           </p>
-          <p>{this.props.property.distance_to_subway} miles to subway</p>
-          <p>{this.props.property.doorman ? "Doorman Building" : null}</p>
-          <p>{this.props.property.pet_friendly ? "Pets Allowed" : null}</p>
-          <p>{this.props.property.laundry ? "Laundry in building" : null}</p>
-          <p>{this.props.property.elevator ? "Elevator Building" : null}</p>
         </div>
       );
     } else {

@@ -27,7 +27,10 @@ class PropertyCard extends React.Component {
 
   render() {
     console.log(this.props);
-    if (this.props.property.rent <= this.props.renter.rent_max) {
+    if (
+      this.props.property.rent <= this.props.renter.rent_max &&
+      this.props.property.borough === this.props.renter.borough
+    ) {
       if (this.state.noButtonClicked === true) {
         return <h4>ew I hate it</h4>;
       } else if (this.state.yesButtonClicked === true) {
@@ -36,8 +39,15 @@ class PropertyCard extends React.Component {
         return (
           <div>
             <PropertyInfo property={this.props.property} />
-            <button onClick={this.handleNoButtonClick}>NO</button>
-            <button onClick={this.handleYesButtonClick}>YES</button>
+            <button className="small-button" onClick={this.handleNoButtonClick}>
+              NO
+            </button>
+            <button
+              className="small-button"
+              onClick={this.handleYesButtonClick}
+            >
+              YES
+            </button>
           </div>
         );
       }

@@ -172,7 +172,7 @@ class EditRenterForm extends React.Component {
             <input type="hidden" name="renterId" value={this.props.renter.id} />
           ) : null}
           <br />
-          <button>Submit</button>
+          <button className="small-button">Submit</button>
         </form>
       </div>
     );
