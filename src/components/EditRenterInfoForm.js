@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { Redirect } from "react-router-dom";
 import { editRenter } from "../thunk/renterThunk";
+import { Form, Col, Button } from "react-bootstrap";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -51,134 +52,151 @@ class EditRenterForm extends React.Component {
     return (
       <div>
         <h3>Looking for...</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Bedrooms</label>
-          <select
-            name="bedrooms"
-            onChange={this.handleChange}
-            value={this.state.bedrooms}
-            placeholder={this.state.bedrooms}
-          >
-            <option> </option>
-            <option value={0}>Studio</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-          <br />
-          <label>Bathrooms</label>
-          <select
-            name="bathrooms"
-            onChange={this.handleChange}
-            value={this.state.bathrooms}
-          >
-            <option> </option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-          <br />
-          <label>Location</label>
-          <select
-            name="borough"
-            onChange={this.handleChange}
-            value={this.state.borough}
-            // placeholder={this.props.renter ? this.props.renter.borough : null}
-          >
-            <option value="Brooklyn">Brooklyn</option>
-            <option value="The Bronx">The Bronx</option>
-            <option value="Manhattan">Manhattan</option>
-            <option value="Queens">Queens</option>
-            <option value="Staten Island">Staten Island</option>
-          </select>
-          <br />
-          <label>Rent Min</label>
-          <input
-            type="text"
-            name="rent_min"
-            // placeholder={this.props.renter ? this.props.renter.rent_min : null}
-            onChange={this.handleChange}
-            value={this.state.rentMin}
-          />
-          <label>Rent Max</label>
-          <input
-            type="text"
-            name="rent_max"
-            // placeholder={this.props.renter ? this.props.renter.rent_max : null}
-            onChange={this.handleChange}
-            value={this.state.rentMax}
-          />
-          <br />
-          <label>Elevator</label>
-          <select
-            name="elevator"
-            onChange={this.handleChange}
-            value={this.state.elevator}
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
 
-          <label>Laundry</label>
-          <select
-            name="laundry"
-            onChange={this.handleChange}
-            value={this.state.laundry}
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-          <br />
-          <label>Pet Friendly</label>
-          <select
-            name="pet_friendly"
-            onChange={this.handleChange}
-            value={this.state.petFriendly}
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-          <label>Doorman</label>
-          <select
-            name="doorman"
-            onChange={this.handleChange}
-            value={this.state.doorman}
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-          <br />
-          <label>Distance To Subway</label>
-          <select
-            name="distance_to_subway"
-            onChange={this.handleChange}
-            value={this.state.distanceToSubway}
-          >
-            <option> </option>
-            <option value={0.1}>less than 500 feet</option>
-            <option value={0.2}>less than 1000 feet</option>
-            <option value={0.5}>less than half a mile</option>
-            <option value={2.0}>more than half a mile</option>
-          </select>
-          <br />
-          <label> Move In Date</label>
-          <DatePicker
-            name="move_in_date"
-            selected={this.state.moveInDate}
-            onChange={this.handleDateChange}
-          />
-          <br />
-          {this.props.renter ? (
-            <input
-              type="hidden"
-              name="renter_id"
-              value={this.props.renter.id}
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridZip">
+              <Form.Label>Location</Form.Label>
+              <Form.Control
+                as="select"
+                name="borough"
+                onChange={this.handleChange}
+                value={this.state.borough}
+              >
+                <option value="">Choose...</option>
+                <option value="Brooklyn">Brooklyn</option>
+                <option value="The Bronx">The Bronx</option>
+                <option value="Manhattan">Manhattan</option>
+                <option value="Queens">Queens</option>
+                <option value="Staten Island">Staten Island</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Bedrooms</Form.Label>
+              <Form.Control
+                as="select"
+                name="bedrooms"
+                onChange={this.handleChange}
+                value={this.state.bedrooms}
+                placeholder={this.state.bedrooms}
+              >
+                <option value="">Choose...</option>
+                <option value={0}>Studio</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>Bathrooms</Form.Label>
+              <Form.Control
+                as="select"
+                name="bathrooms"
+                onChange={this.handleChange}
+                value={this.state.bathrooms}
+              >
+                <option value="">Choose...</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </Form.Control>
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Rent Min</Form.Label>
+              <Form.Control
+                name="rent_min"
+                // placeholder={this.props.renter ? this.props.renter.rent_max : null}
+                onChange={this.handleChange}
+                value={this.state.rent_min}
+                type="rent_min"
+                placeholder="Enter a Number"
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label>Rent Max</Form.Label>
+              <Form.Control
+                type="rent_max"
+                placeholder="Enter a Number"
+                name="rent_max"
+                // placeholder={this.props.renter ? this.props.renter.rent_max : null}
+                onChange={this.handleChange}
+                value={this.state.rent_max}
+              />
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Elevator</Form.Label>
+              <Form.Control
+                as="select"
+                name="elevator"
+                onChange={this.handleChange}
+                value={this.state.elevator}
+              >
+                <option value={false}>No</option>
+                <option value={true}>Yes</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Laundry</Form.Label>
+              <Form.Control
+                as="select"
+                name="laundry"
+                onChange={this.handleChange}
+                value={this.state.laundry}
+              >
+                <option value={false}>No</option>
+                <option value={true}>Yes</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>Pet Friendly</Form.Label>
+              <Form.Control
+                as="select"
+                name="pet_friendly"
+                onChange={this.handleChange}
+                value={this.state.petFriendly}
+              >
+                <option value={false}>No</option>
+                <option value={true}>Yes</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridZip">
+              <Form.Label>Doorman</Form.Label>
+              <Form.Control
+                as="select"
+                name="doorman"
+                onChange={this.handleChange}
+                value={this.state.doorman}
+              >
+                <option value={false}>No</option>
+                <option value={true}>Yes</option>
+              </Form.Control>
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Group id="formGridCheckbox">
+            <Form.Label>Move in Date</Form.Label>
+            <DatePicker
+              name="move_in_date"
+              selected={this.state.moveInDate}
+              onChange={this.handleDateChange}
             />
-          ) : null}
-          <br />
+          </Form.Group>
+
           <button className="small-button">Submit</button>
-        </form>
+        </Form>
       </div>
     );
   }

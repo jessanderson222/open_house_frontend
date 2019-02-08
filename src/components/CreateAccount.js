@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { postRenter } from "../thunk/renterThunk";
 import { withRouter } from "react-router-dom";
+import { Form, Row, Col } from "react-bootstrap";
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -34,33 +35,70 @@ class CreateAccount extends Component {
     return (
       <div>
         <h3>Create Your Account</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>User Name: </label>
-          <input
-            type="text"
-            name="username"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
-          <br />
-          <label>Email: </label>
-          <input
-            type="text"
-            name="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-          <br />
-          <label>Password: </label>
-          <input
-            type="text"
-            name="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <br />
-          <button class="form-button">Sign Up</button>
-        </form>
+
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group as={Row} controlId="formHorizontalUserName">
+            <Form.Label column sm={2}>
+              User Name
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.username}
+                type="username"
+                name="username"
+                placeholder="User Name"
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formHorizontalEmail">
+            <Form.Label column sm={2}>
+              User Name
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.email}
+                type="email"
+                name="email"
+                placeholder="email"
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formHorizontalPassword">
+            <Form.Label column sm={2}>
+              Password
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.password}
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+            </Col>
+          </Form.Group>
+          <fieldset>
+            <Form.Group as={Row}>
+              <Col sm={10} />
+            </Form.Group>
+          </fieldset>
+          {/* HOLD ONTO THIS FOR AGENT SIGNING IN
+          <Form.Group as={Row} controlId="formHorizontalCheck">
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Form.Check label="Remember me" />
+            </Col>
+          </Form.Group> */}
+
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 1 }}>
+              <button class="form-button">Sign In</button>
+            </Col>
+          </Form.Group>
+        </Form>
       </div>
     );
   }

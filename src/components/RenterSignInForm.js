@@ -28,6 +28,7 @@ class RenterSignInForm extends Component {
     console.log(this.state);
     return (
       <div>
+        <h4>User Sign In</h4>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={2}>
@@ -63,14 +64,15 @@ class RenterSignInForm extends Component {
               <Col sm={10} />
             </Form.Group>
           </fieldset>
+          {/* HOLD ONTO THIS FOR AGENT SIGNING IN
           <Form.Group as={Row} controlId="formHorizontalCheck">
             <Col sm={{ span: 10, offset: 2 }}>
               <Form.Check label="Remember me" />
             </Col>
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group as={Row}>
-            <Col sm={{ span: 10, offset: 2 }}>
+            <Col sm={{ span: 10, offset: 1 }}>
               <button class="form-button">Sign In</button>
             </Col>
           </Form.Group>

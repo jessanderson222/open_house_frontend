@@ -64,13 +64,13 @@ class RenterCard extends React.Component {
       } else {
         return (
           <div>
-            <h3>{this.props.renter.username}</h3>
             <img
               onClick={this.handlePictureClick}
-              height="200px"
+              height="150px"
               alt="click to add profile picture"
               src={this.props.renter.img_url}
             />
+            <h3>{this.props.renter.username}</h3>
             <br />
             <button class="small-button" onClick={this.handleEditInfoClick}>
               Edit Info
@@ -80,6 +80,7 @@ class RenterCard extends React.Component {
             <button class="button" onClick={this.handleMatchPropertiesClick}>
               Match
             </button>
+            <br />
             <br />
             <MatchContainer />
           </div>

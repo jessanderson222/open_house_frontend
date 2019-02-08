@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import MatchCard from "./MatchCard";
 import { Carousel } from "react-bootstrap";
+import RecipeReviewCard from "./RecipeReviewCard";
 
 class MatchContainer extends React.Component {
   render() {
@@ -13,6 +14,18 @@ class MatchContainer extends React.Component {
           {this.props.matches
             ? this.props.matches.map((match, i) => (
                 <MatchCard
+                  parent="MatchContainer"
+                  delete={this.props.deleteMatch}
+                  key={i}
+                  match={match}
+                />
+              ))
+            : null}
+        </div>
+        <div>
+          {this.props.matches
+            ? this.props.matches.map((match, i) => (
+                <RecipeReviewCard
                   parent="MatchContainer"
                   delete={this.props.deleteMatch}
                   key={i}
