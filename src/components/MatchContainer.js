@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import MatchCard from "./MatchCard";
+import { Carousel } from "react-bootstrap";
 
 class MatchContainer extends React.Component {
   render() {
