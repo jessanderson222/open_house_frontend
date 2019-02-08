@@ -12,7 +12,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import red from "@material-ui/core/colors/red";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -62,6 +61,11 @@ class RecipeReviewCard extends React.Component {
     }
   };
 
+  handleAgentInfo = e => {
+    e.preventDefault();
+    console.log(":)");
+  };
+
   render() {
     const { classes } = this.props;
     console.log(this.props);
@@ -108,8 +112,10 @@ class RecipeReviewCard extends React.Component {
           <IconButton aria-label="Add to favorites">
             <DeleteIcon onClick={this.handleDeleteMatch} />
           </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
+          <IconButton aria-label="Agent Contact Info">
+            <i onClick={this.handleAgentInfo} class="material-icons">
+              contact_mail
+            </i>
           </IconButton>
           <IconButton
             className={classnames(classes.expand, {
