@@ -19,7 +19,10 @@ export const postRenter = renter => {
       })
     })
       .then(resp => resp.json())
-      .then(data => dispatch(addRenter(data)));
+      .then(data => {
+        localStorage.setItem("token", data.jwt);
+        dispatch(addRenter(data));
+      });
   };
 };
 
@@ -42,7 +45,7 @@ export const signInRenter = renter => {
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         localStorage.setItem("token", data.jwt);
         dispatch(addRenter(data.renter));
       });
@@ -50,7 +53,7 @@ export const signInRenter = renter => {
 };
 
 export const editRenter = (form, renter) => dispatch => {
-  console.log(form);
+  // console.log(form);
   return fetch(`http://localhost:3000/api/v1/renters/${renter.renter.id}`, {
     method: "PATCH",
     headers: {

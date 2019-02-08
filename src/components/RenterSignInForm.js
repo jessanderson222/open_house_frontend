@@ -11,7 +11,7 @@ class RenterSignInForm extends Component {
   };
 
   handleChange = e => {
-    console.log(e.target);
+    // console.log(e.target);
     this.setState({
       [e.target.name]: e.target.value
     });

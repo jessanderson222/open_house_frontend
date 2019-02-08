@@ -14,6 +14,7 @@ import PropertyContainer from "./PropertyContainer";
 import { findRenter } from "../actions/renterActions";
 import { getProperties } from "../thunk/propertyThunk";
 import { getMatches } from "../thunk/matchThunk";
+// import MenuAppBar from "./MenuAppBar";
 import AddRenterPictureForm from "./AddRenterPictureForm";
 
 class App extends Component {
@@ -30,8 +31,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Open House</h1>
           <NavBar />
+          {/* <MenuAppBar /> */}
         </header>
         <Switch>
           <Route path="/signup" render={renter => <CreateAccount />} />
