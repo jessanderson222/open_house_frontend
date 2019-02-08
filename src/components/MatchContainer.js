@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import MatchCard from "./MatchCard";
 import { Carousel } from "react-bootstrap";
-import RecipeReviewCard from "./RecipeReviewCard";
+import MatchTile from "./MatchTile";
+import { deleteMatchFromBackEnd } from "../thunk/matchThunk";
 
 class MatchContainer extends React.Component {
   render() {
@@ -10,24 +11,25 @@ class MatchContainer extends React.Component {
     return (
       <div>
         <h4>My Matches</h4>
-        <div>
+        {/* <div>
           {this.props.matches
             ? this.props.matches.map((match, i) => (
                 <MatchCard
                   parent="MatchContainer"
-                  delete={this.props.deleteMatch}
+                  delete={this.props.deleteMatchFromDom}
                   key={i}
                   match={match}
                 />
               ))
             : null}
-        </div>
+        </div> */}
         <div>
           {this.props.matches
             ? this.props.matches.map((match, i) => (
-                <RecipeReviewCard
+                <MatchTile
                   parent="MatchContainer"
-                  delete={this.props.deleteMatch}
+                  deleteMatchFromDom={this.props.deleteMatchFromDom}
+                  deleteMatchFromBackEnd={this.props.deleteMatchFromBackEnd}
                   key={i}
                   match={match}
                 />
@@ -51,7 +53,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteMatch: match => dispatch({ type: "REMOVE_MATCH", payload: match })
+    deleteMatchFromDom: match =>
+      dispatch({ type: "REMOVE_MATCH", payload: match }),
+    deleteMatchFromBackEnd: match => dispatch(deleteMatchFromBackEnd(match))
   };
 };
 

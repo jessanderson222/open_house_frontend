@@ -16,6 +16,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const styles = theme => ({
   card: {
@@ -48,6 +49,17 @@ class RecipeReviewCard extends React.Component {
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
+  };
+
+  handleDeleteMatch = e => {
+    e.preventDefault();
+    if (this.props) {
+      this.props.deleteMatchFromDom(this.props.match);
+
+      this.props.deleteMatchFromBackEnd(this.props.match);
+    } else {
+      return null;
+    }
   };
 
   render() {
@@ -94,7 +106,7 @@ class RecipeReviewCard extends React.Component {
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
+            <DeleteIcon onClick={this.handleDeleteMatch} />
           </IconButton>
           <IconButton aria-label="Share">
             <ShareIcon />

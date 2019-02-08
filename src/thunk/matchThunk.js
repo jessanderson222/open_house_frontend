@@ -34,7 +34,7 @@ export const getMatches = () => dispatch => {
     .then(data => dispatch(postMatches(data)));
 };
 
-export const deleteMatch = match => dispatch => {
+export const deleteMatchFromBackEnd = match => dispatch => {
   return fetch(`http://localhost:3000/api/v1/matches/${match.id}`, {
     method: "DELETE",
     headers: {

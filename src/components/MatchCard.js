@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteMatch } from "../thunk/matchThunk";
+import { deleteMatchFromBackEnd } from "../thunk/matchThunk";
 
 class MatchCard extends React.Component {
   state = {
@@ -55,7 +55,10 @@ class MatchCard extends React.Component {
             >
               Realtor Info
             </button>
-            <button onClick={this.handleDeleteMatch} className="small-button">
+            <button
+              onClick={this.handleDeleteMatchFromBackEnd}
+              className="small-button"
+            >
               Delete
             </button>
           </div>
@@ -78,7 +81,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteMatch: match => dispatch(deleteMatch(match))
+    deleteMatchFromBackEnd: match => dispatch(deleteMatchFromBackEnd(match))
   };
 };
 
