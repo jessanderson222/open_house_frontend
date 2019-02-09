@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import MatchCard from "./MatchCard";
-import { Carousel } from "react-bootstrap";
+import { Grid } from "@material-ui/core/Grid";
 import MatchTile from "./MatchTile";
 import { deleteMatchFromBackEnd } from "../thunk/matchThunk";
 

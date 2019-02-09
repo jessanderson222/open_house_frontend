@@ -11,6 +11,7 @@ import RenterCard from "./RenterCard";
 import PropertyInfo from "./PropertyInfo";
 import EditRenterInfoForm from "./EditRenterInfoForm";
 import PropertyContainer from "./PropertyContainer";
+import RealtorCard from "./RealtorCard";
 import { findRenter } from "../actions/renterActions";
 import { getProperties } from "../thunk/propertyThunk";
 import { getMatches } from "../thunk/matchThunk";
@@ -48,6 +49,7 @@ class App extends Component {
             path="/addpicture"
             render={renter => <AddRenterPictureForm />}
           />
+          <Route path="/agent" render={renter => <RealtorCard />} />
           <Route path="/" render={renter => <Home />} />
         </Switch>
       </div>
