@@ -105,7 +105,7 @@ class RecipeReviewCard extends React.Component {
             </IconButton>
             <IconButton aria-label="Agent Contact Info">
               <i onClick={this.handleAgentInfo} class="material-icons">
-                contact_mail
+                home
               </i>
             </IconButton>
           </CardActions>
