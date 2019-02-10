@@ -29,7 +29,10 @@ class PropertyContainer extends React.Component {
           </div>
           <div>
             {this.props.properties.length ? (
-              <PropertyTile parent="PropertyContainer" />
+              <PropertyTile
+                properties={this.props.properties}
+                mparent="PropertyContainer"
+              />
             ) : null}
           </div>
         </div>
