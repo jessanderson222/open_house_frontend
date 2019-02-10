@@ -100,13 +100,17 @@ class RecipeReviewCard extends React.Component {
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
-              <DeleteIcon onClick={this.handleDeleteMatch} />
+            <IconButton
+              onClick={this.handleDeleteMatch}
+              aria-label="Add to favorites"
+            >
+              <DeleteIcon />
             </IconButton>
-            <IconButton aria-label="Agent Contact Info">
-              <i onClick={this.handleAgentInfo} class="material-icons">
-                home
-              </i>
+            <IconButton
+              onClick={this.handleAgentInfo}
+              aria-label="Agent Contact Info"
+            >
+              <i class="material-icons">home</i>
             </IconButton>
           </CardActions>
         </Card>

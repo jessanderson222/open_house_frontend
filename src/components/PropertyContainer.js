@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropertyCard from "./PropertyCard";
 import { getProperties } from "../thunk/propertyThunk";
+import PropertyTile from "./PropertyTile";
 
 class PropertyContainer extends React.Component {
   componentDidMount() {
@@ -25,6 +26,11 @@ class PropertyContainer extends React.Component {
                   />
                 ))
               : null}
+          </div>
+          <div>
+            {this.props.properties.length ? (
+              <PropertyTile parent="PropertyContainer" />
+            ) : null}
           </div>
         </div>
       );
