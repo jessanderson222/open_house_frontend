@@ -83,7 +83,7 @@ class PropertyTile extends React.Component {
         <AutoPlaySwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={activeStep}
-          onChangeIndex={this.handleStepChange}
+          onClick={this.handleStepChange}
           enableMouseEvents
         >
           {this.props.properties.map((property, index) => (
@@ -99,9 +99,9 @@ class PropertyTile extends React.Component {
           ))}
         </AutoPlaySwipeableViews>
         <MobileStepper
-          steps={maxSteps}
+          // steps={maxSteps}
           position="static"
-          activeStep={activeStep}
+          // activeStep={activeStep}
           className={classes.mobileStepper}
           nextButton={
             <Button
@@ -120,7 +120,7 @@ class PropertyTile extends React.Component {
             <Button
               size="medium"
               onClick={this.handleBack}
-              disabled={activeStep === 0}
+              // disabled={activeStep === 0}
             >
               {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />
