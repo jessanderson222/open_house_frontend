@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropertyCard from "./PropertyCard";
 import { getProperties } from "../thunk/propertyThunk";
 import PropertyTile from "./PropertyTile";
+import { postMatch } from "../thunk/matchThunk";
 
 class PropertyContainer extends React.Component {
   componentDidMount() {
@@ -31,7 +32,9 @@ class PropertyContainer extends React.Component {
             {this.props.properties.length ? (
               <PropertyTile
                 properties={this.props.properties}
-                mparent="PropertyContainer"
+                parent="PropertyContainer"
+                postMatch={this.props.postMatch}
+                renter={this.props.renter}
               />
             ) : null}
           </div>
@@ -55,7 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProperties: () => dispatch(getProperties())
+    getProperties: () => dispatch(getProperties()),
+    postMatch: (renter, property) => dispatch(postMatch(renter, property))
   };
 };
 

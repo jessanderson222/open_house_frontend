@@ -9,6 +9,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import { connect } from "net";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -39,10 +40,12 @@ class PropertyTile extends React.Component {
   };
 
   handleNext = () => {
+    const { activeStep } = this.state;
     this.setState(prevState => ({
       activeStep: prevState.activeStep + 1
     }));
-    console.log("yep");
+    this.props.postMatch(this.props.renter, this.props.properties[activeStep]);
+    console.log(this.props.renter, this.props.properties[activeStep]);
   };
 
   handleBack = () => {
