@@ -52,6 +52,8 @@
 .component-div {
   text-align: center;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   max-width: 3000px;
   margin: 4px 2px;
 }

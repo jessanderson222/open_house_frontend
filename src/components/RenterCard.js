@@ -1,12 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
-import EditRenterInfoForm from "./EditRenterInfoForm";
-import PropertyInfo from "./PropertyInfo";
 import { Redirect } from "react-router-dom";
 import MatchContainer from "./MatchContainer";
 import { findRenter } from "../actions/renterActions";
-import ScrollMatches from "./ScrollMatches";
+import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 class RenterCard extends React.Component {

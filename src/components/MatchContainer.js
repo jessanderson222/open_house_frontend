@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import MatchCard from "./MatchCard";
-import { Grid } from "@material-ui/core/Grid";
+// import { Grid } from "@material-ui/core/Grid";
 import MatchTile from "./MatchTile";
 import { deleteMatchFromBackEnd } from "../thunk/matchThunk";
 import ScrollMatches from "./ScrollMatches";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 
 class MatchContainer extends React.Component {
   render() {
