@@ -75,7 +75,7 @@ class RecipeReviewCard extends React.Component {
     console.log(this.props, this.state);
     if (this.state.agentInfoClick === true) {
       return (
-        <div class="component-div">
+        <div className="match-div">
           <Card className={classes.card}>
             <CardHeader
               avatar={
@@ -104,7 +104,7 @@ class RecipeReviewCard extends React.Component {
             <CardActions className={classes.actions} disableActionSpacing>
               <IconButton
                 onClick={this.handleDeleteMatch}
-                aria-label="Add to favorites"
+                aria-label="Delete Match"
               >
                 <DeleteIcon />
               </IconButton>

@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import MatchContainer from "./MatchContainer";
 import { findRenter } from "../actions/renterActions";
 import ScrollMatches from "./ScrollMatches";
+import Grid from "@material-ui/core/Grid";
 
 class RenterCard extends React.Component {
   constructor(props) {
@@ -64,23 +65,28 @@ class RenterCard extends React.Component {
         return <Redirect to="/addpicture" />;
       } else {
         return (
-          <div>
-            <img
-              onClick={this.handlePictureClick}
-              height="150px"
-              alt="click to add profile picture"
-              src={this.props.renter.img_url}
-            />
-            <h3>{this.props.renter.username}</h3>
-            <br />
-            <button class="small-button" onClick={this.handleEditInfoClick}>
-              Edit Info
-            </button>
-            <br />
-            <br />
-            <button class="button" onClick={this.handleMatchPropertiesClick}>
-              Match
-            </button>
+          <div className="renter-card">
+            <div className="profile-info">
+              <img
+                className="profile-picture"
+                onClick={this.handlePictureClick}
+                height="150px"
+                alt="click to add profile picture"
+                src={this.props.renter.img_url}
+              />
+              <h3 className="username">{this.props.renter.username}</h3>
+              <button
+                className="small-button"
+                onClick={this.handleEditInfoClick}
+              >
+                Edit Info
+              </button>
+              <br />
+              <br />
+              <button class="button" onClick={this.handleMatchPropertiesClick}>
+                Match
+              </button>
+            </div>
             <br />
             <br />
             {/* <ScrollMatches /> */}
