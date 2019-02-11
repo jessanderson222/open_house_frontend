@@ -120,7 +120,7 @@ class PropertyTile extends React.Component {
             <Button
               size="medium"
               onClick={this.handleBack}
-              // disabled={activeStep === 0}
+              disabled={activeStep === maxSteps - 1}
             >
               {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />

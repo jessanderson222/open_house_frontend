@@ -17,7 +17,7 @@ class PropertyContainer extends React.Component {
         <div>
           <h2>Make a Match</h2>
           {/* <button>Back to My Profile</button> */}
-          <div>
+          {/* <div>
             {this.props.properties.length
               ? this.props.properties.map((property, i) => (
                   <PropertyCard
@@ -27,7 +27,7 @@ class PropertyContainer extends React.Component {
                   />
                 ))
               : null}
-          </div>
+          </div> */}
           <div>
             {this.props.properties.length ? (
               <PropertyTile

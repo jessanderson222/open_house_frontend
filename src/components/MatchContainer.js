@@ -4,6 +4,7 @@ import MatchCard from "./MatchCard";
 import { Grid } from "@material-ui/core/Grid";
 import MatchTile from "./MatchTile";
 import { deleteMatchFromBackEnd } from "../thunk/matchThunk";
+import ScrollMatches from "./ScrollMatches";
 
 class MatchContainer extends React.Component {
   render() {
@@ -23,7 +24,8 @@ class MatchContainer extends React.Component {
               ))
             : null}
         </div> */}
-        <div>
+
+        <div class="component-div">
           {this.props.matches
             ? this.props.matches.map((match, i) => (
                 <MatchTile

@@ -6,6 +6,7 @@ import PropertyInfo from "./PropertyInfo";
 import { Redirect } from "react-router-dom";
 import MatchContainer from "./MatchContainer";
 import { findRenter } from "../actions/renterActions";
+import ScrollMatches from "./ScrollMatches";
 
 class RenterCard extends React.Component {
   constructor(props) {
@@ -82,6 +83,8 @@ class RenterCard extends React.Component {
             </button>
             <br />
             <br />
+            {/* <ScrollMatches /> */}
+
             <MatchContainer />
           </div>
         );
