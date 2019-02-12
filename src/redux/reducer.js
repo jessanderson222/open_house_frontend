@@ -7,14 +7,24 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log(action);
+  console.log(action, state);
   switch (action.type) {
     case "SIGN_IN":
       return { ...state, loggedInRenter: action.payload };
     //this takes care of frontend, form data => thunk => thunk starts fetch => data sent to store
     case "GET_PROPERTIES":
       // debugger;
-      return { ...state, properties: action.payload };
+      return {
+        ...state,
+        properties: [
+          ...action.payload.filter(
+            property =>
+              property.rent <= state.loggedInRenter.rent_max &&
+              property.rent >= state.loggedInRenter.rent_min &&
+              property.borough === state.loggedInRenter.borough
+          )
+        ]
+      };
     case "GET_MATCHES":
       return { ...state, matches: action.payload };
     case "EDIT_RENTER":
