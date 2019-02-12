@@ -59,6 +59,7 @@ class Home extends React.Component {
           <p onClick={this.handleCreateAccountClick}>
             Not a member? Create an account.
           </p>
+          <p>Realtors sign in and create an account here.</p>
           <HomeInfoGrid />
           {/* RENDER THIS WHEN I INCORPORATE THE AGENT FLOW<p>Listing a property? Sign in here.</p> */}
         </div>
