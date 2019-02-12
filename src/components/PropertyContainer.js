@@ -16,7 +16,15 @@ class PropertyContainer extends React.Component {
     console.log(this.props.renter);
     if (this.props.renter) {
       if (this.props.properties.length === 0) {
-        return <h2>Edit your wishlist to start matching!</h2>;
+        return (
+          <div>
+            <h2>Edit your wishlist to start matching!</h2>
+            <img
+              className="home-image"
+              src="https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+            />
+          </div>
+        );
       } else {
         return (
           <div>

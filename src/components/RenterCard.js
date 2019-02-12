@@ -77,7 +77,7 @@ class RenterCard extends React.Component {
                 className="small-button"
                 onClick={this.handleEditInfoClick}
               >
-                Edit Info
+                Edit Wishlist
               </button>
               <br />
               <br />
