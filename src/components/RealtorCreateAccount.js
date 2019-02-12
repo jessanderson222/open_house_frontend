@@ -2,15 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import { postAgent } from "../thunk/agentThunk";
 
 class RealtorCreateAccount extends React.Component {
-  state = {
-    name: "",
-    email: "",
-    company: "",
-    img_url: "",
-    password: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      company: "",
+      img_url: "",
+      password: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleChange = e => {
     this.setState({
@@ -18,12 +23,18 @@ class RealtorCreateAccount extends React.Component {
     });
   };
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.postAgent(this.state);
+    this.props.history.push("/agent");
+  }
+
   render() {
     console.log(this.state);
     return (
       <div>
         <h3>Create Realtor Account</h3>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group as={Row} controlId="formHorizontalName">
             <Form.Label column sm={2}>
               Name
@@ -121,4 +132,15 @@ class RealtorCreateAccount extends React.Component {
   }
 }
 
-export default connect()(RealtorCreateAccount);
+const mapDispatchToProps = dispatch => {
+  return {
+    postAgent: agentObj => dispatch(postAgent(agentObj))
+  };
+};
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(RealtorCreateAccount)
+);
