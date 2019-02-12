@@ -11,7 +11,8 @@ class Home extends React.Component {
 
     this.state = {
       signInClicked: false,
-      createAccountClicked: false
+      createAccountClicked: false,
+      realtorFlow: false
     };
   }
 
@@ -24,21 +25,30 @@ class Home extends React.Component {
     console.log("Clicked", this.state);
   };
 
+  handleRealtorFlowClick = e => {
+    e.preventDefault();
+    this.setState({
+      realtorFlow: !this.state.realtorFlow
+    });
+  };
+
   //change state allowing create account form to render
   handleCreateAccountClick = e => {
     e.preventDefault();
     this.setState({
       createAccountClicked: !this.state.createAccountClicked
     });
-    console.log("clicked", this.state);
   };
 
   //render sign in or create account form conditionally on state
   render() {
+    console.log(this.state);
     if (this.state.createAccountClicked === true) {
       return <Redirect to="/signup" />;
     } else if (this.state.signInClicked === true) {
       return <Redirect to="/login" />;
+    } else if (this.state.realtorFlow === true) {
+      return <Redirect to="/realtorhome" />;
     } else {
       return (
         <div>
@@ -59,7 +69,9 @@ class Home extends React.Component {
           <p onClick={this.handleCreateAccountClick}>
             Not a member? Create an account.
           </p>
-          <p>Realtors sign in and create an account here.</p>
+          <p onClick={this.handleRealtorFlowClick}>
+            Realtors sign in and create an account here.
+          </p>
           <HomeInfoGrid />
           {/* RENDER THIS WHEN I INCORPORATE THE AGENT FLOW<p>Listing a property? Sign in here.</p> */}
         </div>
