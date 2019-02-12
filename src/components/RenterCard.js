@@ -24,7 +24,9 @@ class RenterCard extends React.Component {
     if (token) {
       this.props.findRenter(token);
     }
-    this.props.getMatches();
+    if (this.props.renter) {
+      this.props.getMatches();
+    }
   }
 
   handlePictureClick = e => {
