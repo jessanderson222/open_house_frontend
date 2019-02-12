@@ -26,7 +26,14 @@ const reducer = (state = initialState, action) => {
         ]
       };
     case "GET_MATCHES":
-      return { ...state, matches: action.payload };
+      return {
+        ...state,
+        matches: [
+          ...action.payload.filter(
+            match => match.renter_id === state.loggedInRenter.id
+          )
+        ]
+      };
     case "EDIT_RENTER":
       return { ...state, loggedInRenter: action.payload };
     case "ADD_MATCH":
