@@ -21,15 +21,6 @@ import AddRenterPictureForm from "./AddRenterPictureForm";
 import RealtorCreateAccount from "./RealtorCreateAccount";
 
 class App extends Component {
-  componentDidMount() {
-    // this.props.getProperties();
-
-    let token = localStorage.getItem("token");
-    if (token) {
-      this.props.findRenter(token);
-    }
-  }
-
   render() {
     return (
       <div className="App">
