@@ -1,35 +1,74 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-
-import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-class RealtorSignInForm extends Component {
+class RealtorCreateAccount extends React.Component {
   state = {
+    name: "",
     email: "",
+    company: "",
+    img_url: "",
     password: ""
   };
 
   handleChange = e => {
-    // console.log(e.target);
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  //   handleSubmit = e => {
-  //     e.preventDefault();
-  //     this.props.signInRenter(this.state);
-  //     // this.props.history.push("/profile");
-  //   };
-
   render() {
     console.log(this.state);
     return (
       <div>
-        <h4>Realtor Sign In</h4>
+        <h3>Create Realtor Account</h3>
         <Form>
+          <Form.Group as={Row} controlId="formHorizontalName">
+            <Form.Label column sm={2}>
+              Name
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.name}
+                type="name"
+                name="name"
+                placeholder="Name"
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formHorizontalCompany">
+            <Form.Label column sm={2}>
+              Company
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.company}
+                type="company"
+                name="company"
+                placeholder="Company"
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formHorizontalImage">
+            <Form.Label column sm={2}>
+              Image URL
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.img_url}
+                type="img_url"
+                name="img_url"
+                placeholder="Image URL"
+              />
+            </Col>
+          </Form.Group>
+
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={2}>
               Email
@@ -82,4 +121,4 @@ class RealtorSignInForm extends Component {
   }
 }
 
-export default withRouter(connect()(RealtorSignInForm));
+export default connect()(RealtorCreateAccount);

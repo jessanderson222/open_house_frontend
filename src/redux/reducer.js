@@ -3,7 +3,8 @@ import { stat } from "fs";
 const initialState = {
   loggedInRenter: null,
   properties: [],
-  matches: []
+  matches: [],
+  loggedInRealtor: null
 };
 
 const reducer = (state = initialState, action) => {
