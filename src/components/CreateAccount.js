@@ -54,7 +54,7 @@ class CreateAccount extends Component {
 
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={2}>
-              User Name
+              Email
             </Form.Label>
             <Col sm={10}>
               <Form.Control
