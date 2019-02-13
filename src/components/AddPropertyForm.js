@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import DatePicker from "react-datepicker";
 import { Form, Col } from "react-bootstrap";
 import { addProperty } from "../thunk/propertyThunk";
+import { Redirect } from "react-router-dom";
 
 class AddPropertyForm extends Component {
   constructor(props) {
@@ -42,6 +43,8 @@ class AddPropertyForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addProperty(this.state, this.props.agent.id);
+
+    return <Redirect to="/agent" />;
   };
 
   render() {

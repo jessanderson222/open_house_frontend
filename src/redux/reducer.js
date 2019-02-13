@@ -28,6 +28,15 @@ const reducer = (state = initialState, action) => {
           )
         ]
       };
+    case "GET_AGENT_PROPERTIES":
+      return {
+        ...state,
+        properties: [
+          ...action.payload.filter(
+            property => property.agent_id === state.loggedInAgent.id
+          )
+        ]
+      };
     case "GET_MATCHES":
       return {
         ...state,
@@ -39,6 +48,11 @@ const reducer = (state = initialState, action) => {
       };
     case "EDIT_RENTER":
       return { ...state, loggedInRenter: action.payload };
+    case "EDIT_AGENT":
+      return {
+        ...state,
+        properties: [...state.properties, action.payload]
+      };
     case "ADD_MATCH":
       return {
         ...state,

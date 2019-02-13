@@ -24,7 +24,7 @@ class RealtorCard extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     if (this.props.agent) {
       if (this.state.clicked === true) {
         return <Redirect to="/addproperty" />;

@@ -18,7 +18,10 @@ export const findAgent = token => {
       }
     })
       .then(res => res.json())
-      .then(res => dispatch(signInAgent(res.agent)));
+      .then(res => {
+        // debugger;
+        dispatch(signInAgent(res.agent));
+      });
     // dispatch(signInAgent(res))
     // dispatch(signInRenter(res.renter))
   };

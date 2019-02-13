@@ -38,9 +38,9 @@ export const signInAgent = agent => {
     })
       .then(resp => resp.json())
       .then(data => {
-        // console.log(data);
+        // debugger;
         localStorage.setItem("token", data.jwt);
-        dispatch(addAgent(data.renter));
+        dispatch(addAgent(data.agent));
       });
   };
 };
