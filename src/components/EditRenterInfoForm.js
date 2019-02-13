@@ -114,7 +114,7 @@ class EditRenterForm extends React.Component {
                 // placeholder={this.props.renter ? this.props.renter.rent_max : null}
                 onChange={this.handleChange}
                 value={this.state.rent_min}
-                type="rent_min"
+                type="number"
                 placeholder="Enter a Number"
               />
             </Form.Group>
@@ -122,7 +122,7 @@ class EditRenterForm extends React.Component {
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Rent Max</Form.Label>
               <Form.Control
-                type="rent_max"
+                type="number"
                 placeholder="Enter a Number"
                 name="rent_max"
                 // placeholder={this.props.renter ? this.props.renter.rent_max : null}
