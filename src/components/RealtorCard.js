@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { findAgent } from "../actions/agentActions";
+import RealtorInfo from "./RealtorInfo";
 
 class RealtorCard extends Component {
+  state = {
+    clicked: false
+  };
+
   componentDidMount() {
     let token = localStorage.getItem("token");
     if (token) {
@@ -11,18 +16,35 @@ class RealtorCard extends Component {
     }
   }
 
+  handleClick = e => {
+    this.setState({
+      clicked: !this.state.clicked
+    });
+  };
+
   render() {
-    console.log(this.props);
+    console.log(this.state);
     if (this.props.agent) {
-      // debugger;
-      return (
-        <div>
-          <h3>{this.props.agent.name}</h3>
-          <img className="realtor-image" src={this.props.agent.img_url} />
-          <h3>{this.props.agent.company}</h3>
-          <h5>{this.props.agent.email}</h5>
-        </div>
-      );
+      if (this.state.clicked === true) {
+        return <h4 onClick={this.handleClick}>:)</h4>;
+      } else {
+        return (
+          <div>
+            <h3>{this.props.agent.name}</h3>
+            <img className="realtor-image" src={this.props.agent.img_url} />
+            <h3>{this.props.agent.company}</h3>
+            <h5>{this.props.agent.email}</h5>
+            <br />
+            <button onClick={this.handleClick} className="button">
+              Create a Listing
+            </button>
+            <br />
+            <br />
+            <h4>My Properties</h4>
+            <RealtorInfo />
+          </div>
+        );
+      }
     } else {
       return (
         <div>

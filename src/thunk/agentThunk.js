@@ -13,19 +13,14 @@ export const postAgent = agent => {
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
-        // localStorage.setItem("token", data.jwt);
-        // dispatch(addAgent(data.agent));
+        localStorage.setItem("token", data.jwt);
+        dispatch(addAgent(data.agent));
       });
-    // {
-    //     localStorage.setItem("token", data.jwt);
-    //     dispatch(addAgent(data));
-    //   });
   };
 };
 
 export const signInAgent = agent => {
-  debugger;
+  // debugger;
   return function(dispatch) {
     return fetch("http://localhost:3000/api/v1/agentlogin", {
       method: "POST",
