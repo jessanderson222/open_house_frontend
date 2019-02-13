@@ -8,6 +8,10 @@
   height: 40vmin;
 }
 
+.realtor-image {
+  max-height: 200px;
+}
+
 .App-link {
   color: #61dafb;
 }

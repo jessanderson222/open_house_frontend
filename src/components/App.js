@@ -63,9 +63,19 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  if (state.renter === null) {
+    return null;
+  } else
+    return {
+      agent: state.loggedInAgent,
+      renter: state.loggedInRenter
+    };
+};
+
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(App)
 );

@@ -29,10 +29,7 @@ class NavBar extends Component {
               <Nav.Link href="#home">Home</Nav.Link>
             </Link>
             <Link to={"/profile"}>
-              <Nav.Link href="#link">
-                My Profile
-                {/* {localStorage.length !== 0 ? "My Profile" : null} */}
-              </Nav.Link>
+              <Nav.Link href="#link">My Profile</Nav.Link>
             </Link>
             <div onClick={localStorage.length !== 0 ? this.handleLogOut : null}>
               <Link to={localStorage.length !== 0 ? "/logout" : "/login"}>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { signInAgent } from "../thunk/agentThunk";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
@@ -18,18 +18,18 @@ class RealtorSignInForm extends Component {
     });
   };
 
-  //   handleSubmit = e => {
-  //     e.preventDefault();
-  //     this.props.signInRenter(this.state);
-  //     // this.props.history.push("/profile");
-  //   };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.signInAgent(this.state);
+    this.props.history.push("/agent");
+  };
 
   render() {
     console.log(this.state);
     return (
       <div>
         <h4>Realtor Sign In</h4>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={2}>
               Email
@@ -82,4 +82,15 @@ class RealtorSignInForm extends Component {
   }
 }
 
-export default withRouter(connect()(RealtorSignInForm));
+const mapDispatchToProps = dispatch => {
+  return {
+    signInAgent: agentObj => dispatch(signInAgent(agentObj))
+  };
+};
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(RealtorSignInForm)
+);

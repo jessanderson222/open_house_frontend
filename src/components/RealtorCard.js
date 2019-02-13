@@ -14,10 +14,13 @@ class RealtorCard extends Component {
   render() {
     console.log(this.props);
     if (this.props.agent) {
-      debugger;
+      // debugger;
       return (
         <div>
-          <h3>{this.props.agent.agent.email}</h3>
+          <h3>{this.props.agent.name}</h3>
+          <img className="realtor-image" src={this.props.agent.img_url} />
+          <h3>{this.props.agent.company}</h3>
+          <h5>{this.props.agent.email}</h5>
         </div>
       );
     } else {
