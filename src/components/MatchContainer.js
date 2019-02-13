@@ -7,10 +7,13 @@ import { deleteMatchFromBackEnd } from "../thunk/matchThunk";
 import ScrollMatches from "./ScrollMatches";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { getMatches } from "../thunk/matchThunk";
 
 class MatchContainer extends React.Component {
   render() {
-    // console.log(this.props);
+    if (this.props.renter !== null) {
+      this.props.getMatches();
+    }
     return (
       <div>
         <h4>My Matches</h4>
@@ -59,7 +62,8 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteMatchFromDom: match =>
       dispatch({ type: "REMOVE_MATCH", payload: match }),
-    deleteMatchFromBackEnd: match => dispatch(deleteMatchFromBackEnd(match))
+    deleteMatchFromBackEnd: match => dispatch(deleteMatchFromBackEnd(match)),
+    getMatches: () => dispatch(getMatches())
   };
 };
 

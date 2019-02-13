@@ -24,6 +24,7 @@ export const postMatch = (renter, property) => {
 };
 
 export const getMatches = () => dispatch => {
+  // debugger;
   return fetch("http://localhost:3000/api/v1/matches", {
     method: "GET",
     headers: {

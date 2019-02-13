@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import MatchContainer from "./MatchContainer";
 import { findRenter } from "../actions/renterActions";
-import { getMatches } from "../thunk/matchThunk";
+
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
@@ -23,9 +23,6 @@ class RenterCard extends React.Component {
     let token = localStorage.getItem("token");
     if (token) {
       this.props.findRenter(token);
-    }
-    if (this.props.renter !== null) {
-      this.props.getMatches();
     }
   }
 
@@ -114,8 +111,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    findRenter: token => dispatch(findRenter(token)),
-    getMatches: () => dispatch(getMatches())
+    findRenter: token => dispatch(findRenter(token))
   };
 };
 
