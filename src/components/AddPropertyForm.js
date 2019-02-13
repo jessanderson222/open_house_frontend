@@ -129,7 +129,7 @@ class AddPropertyForm extends Component {
                   // placeholder={this.props.renter ? this.props.renter.rent_max : null}
                   onChange={this.handleChange}
                   value={this.state.rent}
-                  type="rent"
+                  type="number"
                   placeholder="Enter a Number"
                 />
               </Form.Group>
@@ -140,7 +140,7 @@ class AddPropertyForm extends Component {
                   // placeholder={this.props.renter ? this.props.renter.rent_max : null}
                   onChange={this.handleChange}
                   value={this.state.distance_to_subway}
-                  type="distance_to_subway"
+                  type="number"
                   placeholder="Be Specific (ex: 0.3)"
                 />
               </Form.Group>
