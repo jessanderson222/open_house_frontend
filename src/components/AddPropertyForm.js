@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import { Form, Col } from "react-bootstrap";
 import { addProperty } from "../thunk/propertyThunk";
 import { Redirect } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 class AddPropertyForm extends Component {
   constructor(props) {
@@ -43,8 +44,7 @@ class AddPropertyForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addProperty(this.state, this.props.agent.id);
-
-    return <Redirect to="/agent" />;
+    this.props.history.push("/agent");
   };
 
   render() {
@@ -268,7 +268,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddPropertyForm);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AddPropertyForm)
+);

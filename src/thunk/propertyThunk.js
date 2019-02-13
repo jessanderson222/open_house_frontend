@@ -25,7 +25,6 @@ export const getAgentProperties = () => dispatch => {
 };
 
 export const addProperty = (form, id) => dispatch => {
-  debugger;
   return fetch("http://localhost:3000/api/v1/properties", {
     method: "POST",
     headers: {
