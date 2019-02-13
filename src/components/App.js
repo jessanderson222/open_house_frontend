@@ -19,6 +19,7 @@ import { getMatches } from "../thunk/matchThunk";
 import RealtorHome from "./RealtorHome";
 import AddRenterPictureForm from "./AddRenterPictureForm";
 import RealtorCreateAccount from "./RealtorCreateAccount";
+import AddPropertyForm from "./AddPropertyForm";
 
 class App extends Component {
   render() {
@@ -47,6 +48,7 @@ class App extends Component {
             path="/addpicture"
             render={renter => <AddRenterPictureForm />}
           />
+          <Route path="/addproperty" render={agent => <AddPropertyForm />} />
           <Route path="/agent" render={renter => <RealtorCard />} />
           <Route path="/" render={renter => <Home />} />
         </Switch>

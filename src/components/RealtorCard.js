@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { findAgent } from "../actions/agentActions";
 import RealtorInfo from "./RealtorInfo";
+import { Redirect } from "react-router-dom";
 
 class RealtorCard extends Component {
   state = {
@@ -26,7 +27,7 @@ class RealtorCard extends Component {
     console.log(this.state);
     if (this.props.agent) {
       if (this.state.clicked === true) {
-        return <h4 onClick={this.handleClick}>:)</h4>;
+        return <Redirect to="/addproperty" />;
       } else {
         return (
           <div>
