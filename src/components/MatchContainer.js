@@ -10,10 +10,16 @@ import Grid from "@material-ui/core/Grid";
 import { getMatches } from "../thunk/matchThunk";
 
 class MatchContainer extends React.Component {
-  render() {
-    if (this.props.renter !== null) {
+  componentDidMount() {
+    if (this.props.renter !== null || this.state.loggedinRenter !== null) {
       this.props.getMatches();
     }
+  }
+
+  render() {
+    // if (this.props.renter !== null || this.state.loggedinRenter !== null) {
+    //   this.props.getMatches();
+    // }
     return (
       <div>
         <h4>My Matches</h4>
