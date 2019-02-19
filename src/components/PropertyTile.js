@@ -16,7 +16,8 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = theme => ({
   root: {
     maxWidth: 400,
-    flexGrow: 1
+    flexGrow: 1,
+    alignItems: "center"
   },
   header: {
     display: "flex",
