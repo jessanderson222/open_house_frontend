@@ -21,16 +21,23 @@ class NavBar extends Component {
     return (
       <Navbar bg="light" expand="lg">
         {/* fixed="top" */}
-        <Navbar.Brand href="#home">OpenHouse</Navbar.Brand>
+        <Navbar.Brand href="/home">OpenHouse</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link to="/">
+            {/* <Link to="/">
               <Nav.Link href="#home">Home</Nav.Link>
-            </Link>
-            <Link to={"/profile"}>
-              <Nav.Link href="#link">My Profile</Nav.Link>
-            </Link>
+            </Link> */}
+            {this.props.renter ? (
+              <Link to={this.props.renter ? "/profile" : "/home"}>
+                <Nav.Link href="#link">My Profile</Nav.Link>
+              </Link>
+            ) : null}
+            {this.props.agent ? (
+              <Link to={this.props.agent ? "/agent" : "/home"}>
+                <Nav.Link href="#link">Agent Profile</Nav.Link>
+              </Link>
+            ) : null}
             <div onClick={localStorage.length !== 0 ? this.handleLogOut : null}>
               <Link to={localStorage.length !== 0 ? "/logout" : "/home"}>
                 <Nav.Link href="#link">
@@ -46,12 +53,10 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => {
-  if (state.renter === null) {
-    return null;
-  } else
-    return {
-      renter: state.loggedInRenter
-    };
+  return {
+    renter: state.loggedInRenter,
+    agent: state.loggedInAgent
+  };
 };
 
 const mapDispatchToProps = dispatch => {

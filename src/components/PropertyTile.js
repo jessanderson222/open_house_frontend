@@ -65,76 +65,80 @@ class PropertyTile extends React.Component {
     const { activeStep } = this.state;
     const maxSteps = this.props.properties.length;
     console.log(this.props);
-    return (
-      <div className="property-tile">
-        <div className={classes.root}>
-          <Paper square elevation={0} className={classes.header}>
-            <Typography>
-              {(this.props.properties[activeStep].bedrooms !== 0
-                ? this.props.properties[activeStep].bedrooms
-                : "") +
-                (this.props.properties[activeStep].bedrooms !== 0
-                  ? " Bedroom Apartment in "
-                  : "Studio Apartment in ") +
-                this.props.properties[activeStep].borough +
-                ", $"}
-            </Typography>
+    if (this.props.properties !== null) {
+      return (
+        <div className="property-tile">
+          <div className={classes.root}>
+            <Paper square elevation={0} className={classes.header}>
+              <Typography>
+                {(this.props.properties[activeStep].bedrooms !== 0
+                  ? this.props.properties[activeStep].bedrooms
+                  : "") +
+                  (this.props.properties[activeStep].bedrooms !== 0
+                    ? " Bedroom Apartment in "
+                    : "Studio Apartment in ") +
+                  this.props.properties[activeStep].borough +
+                  ", $"}
+              </Typography>
 
-            <Typography> {this.props.properties[activeStep].rent}</Typography>
-          </Paper>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onClick={this.handleStepChange}
-            enableMouseEvents
-          >
-            {this.props.properties.map((property, index) => (
-              <div key={property.id}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                  <img
-                    className={classes.img}
-                    src={property.img_1}
-                    alt={property.neighborhood}
-                  />
-                ) : null}
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
-          <MobileStepper
-            // steps={maxSteps}
-            position="static"
-            // activeStep={activeStep}
-            className={classes.mobileStepper}
-            nextButton={
-              <Button
-                size="medium"
-                onClick={this.handleNext}
-                disabled={activeStep === maxSteps - 1}
-              >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowLeft />
-                ) : (
-                  <i class="material-icons">check_circle_outline</i>
-                )}
-              </Button>
-            }
-            backButton={
-              <Button
-                size="medium"
-                onClick={this.handleBack}
-                disabled={activeStep === maxSteps - 1}
-              >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowRight />
-                ) : (
-                  <i class="material-icons">highlight_off</i>
-                )}
-              </Button>
-            }
-          />
+              <Typography> {this.props.properties[activeStep].rent}</Typography>
+            </Paper>
+            <AutoPlaySwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={activeStep}
+              onClick={this.handleStepChange}
+              enableMouseEvents
+            >
+              {this.props.properties.map((property, index) => (
+                <div key={property.id}>
+                  {Math.abs(activeStep - index) <= 2 ? (
+                    <img
+                      className={classes.img}
+                      src={property.img_1}
+                      alt={property.neighborhood}
+                    />
+                  ) : null}
+                </div>
+              ))}
+            </AutoPlaySwipeableViews>
+            <MobileStepper
+              // steps={maxSteps}
+              position="static"
+              // activeStep={activeStep}
+              className={classes.mobileStepper}
+              nextButton={
+                <Button
+                  size="medium"
+                  onClick={this.handleNext}
+                  disabled={activeStep === maxSteps - 1}
+                >
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowLeft />
+                  ) : (
+                    <i class="material-icons">check_circle_outline</i>
+                  )}
+                </Button>
+              }
+              backButton={
+                <Button
+                  size="medium"
+                  onClick={this.handleBack}
+                  disabled={activeStep === maxSteps - 1}
+                >
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowRight />
+                  ) : (
+                    <i class="material-icons">highlight_off</i>
+                  )}
+                </Button>
+              }
+            />
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <h3>Please sign in</h3>;
+    }
   }
 }
 

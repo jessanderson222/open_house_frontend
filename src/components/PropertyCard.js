@@ -54,83 +54,78 @@ class PropertyCard extends React.Component {
     const { classes } = this.props;
     console.log(this.props);
     return (
-      <div className="match-div">
-        <Card className={classes.card}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
-              </Avatar>
-            }
-            action={
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
-            }
-            title={
-              (this.props.property.bedrooms !== 0
-                ? this.props.property.bedrooms + " Bedroom Apartment"
-                : "Studio Apartment") +
-              " in " +
-              this.props.property.borough +
-              " (" +
-              this.props.property.neighborhood +
-              ")"
-            }
-            subheader={"$" + this.props.property.rent}
-          />
-          <CardMedia
-            className={classes.media}
-            image={this.props.property.img_1}
-            title="img_1"
-          />
+      <Card className={classes.card}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="Recipe" className={classes.avatar}>
+              R
+            </Avatar>
+          }
+          action={
+            <IconButton>
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={
+            (this.props.property.bedrooms !== 0
+              ? this.props.property.bedrooms + " Bedroom Apartment"
+              : "Studio Apartment") +
+            " in " +
+            this.props.property.borough +
+            " (" +
+            this.props.property.neighborhood +
+            ")"
+          }
+          subheader={"$" + this.props.property.rent}
+        />
+        <CardMedia
+          className={classes.media}
+          image={this.props.property.img_1}
+          title="img_1"
+        />
+        <CardContent>
+          <Typography component="p">
+            Move-in Date: {this.props.property.move_in_date}
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.actions} disableActionSpacing>
+          <IconButton
+            className={classnames(classes.expand, {
+              [classes.expandOpen]: this.state.expanded
+            })}
+            onClick={this.handleExpandClick}
+            aria-expanded={this.state.expanded}
+            aria-label="Show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography component="p">
-              Move-in Date: {this.props.property.move_in_date}
+            <CardMedia
+              className={classes.media}
+              image={this.props.property.img_2}
+              title="img_2"
+            />
+            <CardMedia
+              className={classes.media}
+              image={this.props.property.img_3}
+              title="img_3"
+            />
+
+            <Typography>
+              Bathrooms: {this.props.property.bathrooms}
+              <br />
+              Distance to Subway: {this.props.property.distance_to_subway} miles
+              <br />
+              Doorman: {this.props.property.doorman ? "Yes" : "No"} <br />
+              Elevator: {this.props.property.elevator ? "Yes" : "No"} <br />
+              Laundry: {this.props.property.laundry ? "Yes" : "No"} <br />
+              Pet Friendly: {this.props.property.pet_friendly ? "Yes" : "No"}
             </Typography>
           </CardContent>
-          <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded
-              })}
-              onClick={this.handleExpandClick}
-              aria-expanded={this.state.expanded}
-              aria-label="Show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
-          <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <CardMedia
-                className={classes.media}
-                image={this.props.property.img_2}
-                title="img_2"
-              />
-              <CardMedia
-                className={classes.media}
-                image={this.props.property.img_3}
-                title="img_3"
-              />
-
-              <Typography>
-                Bathrooms: {this.props.property.bathrooms}
-                <br />
-                Distance to Subway: {
-                  this.props.property.distance_to_subway
-                }{" "}
-                miles
-                <br />
-                Doorman: {this.props.property.doorman ? "Yes" : "No"} <br />
-                Elevator: {this.props.property.elevator ? "Yes" : "No"} <br />
-                Laundry: {this.props.property.laundry ? "Yes" : "No"} <br />
-                Pet Friendly: {this.props.property.pet_friendly ? "Yes" : "No"}
-              </Typography>
-            </CardContent>
-          </Collapse>
-        </Card>
-      </div>
+        </Collapse>
+      </Card>
     );
   }
 }

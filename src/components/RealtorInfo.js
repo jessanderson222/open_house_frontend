@@ -12,9 +12,13 @@ class RealtorInfo extends Component {
   }
 
   render() {
-    return this.props.properties.map((property, i) => (
-      <PropertyCard property={property} key={i} />
-    ));
+    return (
+      <div class="component-div">
+        {this.props.properties.map((property, i) => (
+          <PropertyCard property={property} key={i} />
+        ))}
+      </div>
+    );
   }
 }
 

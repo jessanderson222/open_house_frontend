@@ -7,7 +7,9 @@ import { postMatch } from "../thunk/matchThunk";
 
 class PropertyContainer extends React.Component {
   componentDidMount() {
-    this.props.getProperties();
+    if (this.props.renter) {
+      this.props.getProperties();
+    }
 
     //put function in here that filters, could pass the info into getProperties?
   }
@@ -25,24 +27,12 @@ class PropertyContainer extends React.Component {
             />
           </div>
         );
-      } else {
+      } else if (this.props.properties !== null) {
         return (
           <div>
             <h2>Make a Match</h2>
-            {/* <button>Back to My Profile</button> */}
-            {/* <div>
-            {this.props.properties.length
-              ? this.props.properties.map((property, i) => (
-                  <PropertyCard
-                    parent="PropertyContainer"
-                    key={i}
-                    property={property}
-                  />
-                ))
-              : null}
-          </div> */}
             <div className="property-container">
-              {this.props.properties.length ? (
+              {this.props.properties !== undefined ? (
                 <PropertyTile
                   properties={this.props.properties}
                   parent="PropertyContainer"
@@ -55,7 +45,7 @@ class PropertyContainer extends React.Component {
         );
       }
     } else {
-      return <h4>Please Sign In</h4>;
+      return <h4>Return to Your Profile</h4>;
     }
   }
 }

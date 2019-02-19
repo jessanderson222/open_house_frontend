@@ -79,7 +79,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .PropertyTile-img-244 {
@@ -97,7 +97,6 @@
 .MuiPaper-root-245.MuiPaper-elevation0-247.MuiMobileStepper-root-308.MuiMobileStepper-positionStatic-311 {
   margin-left: auto;
   margin-right: auto;
-  display: block;
 }
 
 .property-container {
