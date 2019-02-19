@@ -75,7 +75,7 @@ class RecipeReviewCard extends React.Component {
     console.log(this.props, this.state);
     if (this.state.agentInfoClick === true) {
       return (
-        <div className="match-div">
+        <div className="component-div">
           <Card className={classes.card}>
             <CardHeader
               avatar={
