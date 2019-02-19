@@ -102,17 +102,22 @@ class PropertyCard extends React.Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <CardMedia
-              className={classes.media}
-              image={this.props.property.img_2}
-              title="img_2"
-            />
-            <CardMedia
-              className={classes.media}
-              image={this.props.property.img_3}
-              title="img_3"
-            />
-
+            <Typography>
+              <h5>Matched Renters:</h5>
+            </Typography>
+            {this.props.property.renters.length > 0
+              ? this.props.property.renters.map(renter => (
+                  <Typography>
+                    Renter: {renter.username}
+                    <br />
+                    Email: {renter.email}
+                  </Typography>
+                ))
+              : "No current matches."}
+            <br />
+            <Typography>
+              <h5>Property Details:</h5>
+            </Typography>
             <Typography>
               Bathrooms: {this.props.property.bathrooms}
               <br />
