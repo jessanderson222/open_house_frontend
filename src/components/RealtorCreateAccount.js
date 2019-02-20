@@ -1,53 +1,81 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { postRenter } from "../thunk/renterThunk";
 import { withRouter } from "react-router-dom";
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
+import { postAgent } from "../thunk/agentThunk";
 
-class CreateAccount extends Component {
+class RealtorCreateAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      name: "",
       email: "",
+      company: "",
+      img_url: "",
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange = e => {
-    console.log(e.target);
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  //just use thunk instead of altering state. call addRenter inside of the thunk. that way it is put on state after clearing through backend.
-
   handleSubmit(e) {
     e.preventDefault();
-    const renterObj = this.state;
-    this.props.postRenter(renterObj);
-    this.props.history.push("/profile");
+    this.props.postAgent(this.state);
+    this.props.history.push("/agent");
   }
 
   render() {
     console.log(this.state);
     return (
       <div>
-        <h3>Create Your Account</h3>
-
+        <h3>Create Realtor Account</h3>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group as={Row} controlId="formHorizontalUserName">
+          <Form.Group as={Row} controlId="formHorizontalName">
             <Form.Label column sm={2}>
-              User Name
+              Name
             </Form.Label>
             <Col sm={10}>
               <Form.Control
                 onChange={this.handleChange}
-                value={this.state.username}
-                type="username"
-                name="username"
-                placeholder="User Name"
+                value={this.state.name}
+                type="name"
+                name="name"
+                placeholder="Name"
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formHorizontalCompany">
+            <Form.Label column sm={2}>
+              Company
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.company}
+                type="company"
+                name="company"
+                placeholder="Company"
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formHorizontalImage">
+            <Form.Label column sm={2}>
+              Image URL
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                onChange={this.handleChange}
+                value={this.state.img_url}
+                type="img_url"
+                name="img_url"
+                placeholder="Image URL"
               />
             </Col>
           </Form.Group>
@@ -62,7 +90,7 @@ class CreateAccount extends Component {
                 value={this.state.email}
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
               />
             </Col>
           </Form.Group>
@@ -106,10 +134,7 @@ class CreateAccount extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    postRenter: renterObj => dispatch(postRenter(renterObj)),
-    addRenter: renterObj => {
-      dispatch({ type: "SIGN_IN", payload: renterObj });
-    }
+    postAgent: agentObj => dispatch(postAgent(agentObj))
   };
 };
 
@@ -117,5 +142,5 @@ export default withRouter(
   connect(
     null,
     mapDispatchToProps
-  )(CreateAccount)
+  )(RealtorCreateAccount)
 );

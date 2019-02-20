@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: #818181;
 }
 
 .App-logo {
@@ -7,19 +8,103 @@
   height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.realtor-image {
+  max-height: 200px;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.button {
+  background-color: #76767a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.small-button {
+  background-color: #76767a;
+  border: none;
+  color: white;
+  padding: 3px 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px;
+}
+
+.form-button {
+  background-color: #76767a;
+  border: none;
+  color: white;
+  padding: 10px 28px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.grid-picture {
+  max-height: 250px;
+}
+
+.component-div {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 3000px;
+  margin: 4px 2px;
+}
+
+.home-image {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 400px;
+}
+
+.match-div {
+  display: block;
+  width: 40%;
+}
+
+.property-tile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* text-align: center; */
+}
+
+.PropertyTile-img-244 {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.MuiPaper-root-245.MuiPaper-elevation0-247.PropertyTile-header-243 {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.MuiPaper-root-245.MuiPaper-elevation0-247.MuiMobileStepper-root-308.MuiMobileStepper-positionStatic-311 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.property-container {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 40%;
 }
 
 @keyframes App-logo-spin {
